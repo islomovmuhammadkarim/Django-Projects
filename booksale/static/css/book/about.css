@@ -1,0 +1,62 @@
+/* About sahifa container */
+.about-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #1e1e1e;   /* Siyohrang fon */
+    color: #e0e0e0;              /* Matn rangi och kulrang */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Yumshoq qora shadow */
+    line-height: 1.6;
+}
+
+/* Sarlavhalar */
+.about-container h1, 
+.about-container h2 {
+    color: #198754;              /* Qizil sarlavha */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Matn paragraf */
+.about-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Linklar */
+.about-container a {
+    color: #ffffff;
+    text-decoration: underline;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.about-container a:hover {
+    color: #198754;
+    text-shadow: 0 0 5px #198754;
+}
+
+/* Rasmlar uchun (agar bo‘lsa) */
+.about-container img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 12px #198754;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .about-container {
+        padding: 20px;
+        margin: 20px 10px;
+    }
+
+    .about-container h1, .about-container h2 {
+        font-size: 20px;
+    }
+
+    .about-container p {
+        font-size: 14px;
+    }
+}

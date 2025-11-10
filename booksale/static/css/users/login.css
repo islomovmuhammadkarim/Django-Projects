@@ -1,0 +1,98 @@
+/* Container */
+.register-container {
+    max-width: 500px;
+    margin: 40px auto;           /* vertikal markazlash */
+    padding: 30px;               /* container ichki padding */
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+}
+
+/* Sarlavha */
+.register-container h1 { 
+    text-align: center; 
+    color: #f44336; 
+    margin: 0 0 30px 0;          /* pastga 30px */
+}
+
+/* Form field container */
+.form-field {
+    margin: 0 0 20px 0;           /* pastga 20px */
+    padding: 0;                   /* padding containerga bog‘liq */
+}
+
+/* Label */
+label {
+    display: block;
+    margin: 0 0 5px 0;           /* pastga 5px */
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+/* Inputlar */
+.register-container form input {
+    width: 100%;
+    padding: 12px;                /* barcha tarafdan bir xil padding */
+    margin: 0;                     /* tashqi margin olib tashlandi */
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #2a2a2a;
+    color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Submit tugma */
+.btn-submit {
+    width: 100%;
+    padding: 12px;                /* inputlar bilan bir xil padding */
+    margin: 0;                     /* tashqi margin olib tashlandi */
+    margin-top: 10px;              /* inputdan pastga 10px */
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover { 
+    background-color: #d32f2f;  
+}
+
+/* Xatolik xabarlar */
+.message.error,
+.message.success {
+    padding: 12px;                /* inputlar bilan bir xil padding */
+    border-radius: 5px;
+    margin: 10px 0;               /* past va yuqori teng */
+    text-align: center;
+    font-size: 14px;
+}
+
+.message.error {
+    color: #ff4d4d;
+    background-color: #330000;
+}
+
+.message.success {
+    color: #00ff99;
+    background-color: #003300;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+    .register-container {
+        padding: 20px;
+        margin: 20px 10px;
+    }
+
+    .register-container form input,
+    .btn-submit {
+        font-size: 14px;
+        padding: 10px;  /* kichik ekranlar uchun padding kamaytirildi */
+    }
+}

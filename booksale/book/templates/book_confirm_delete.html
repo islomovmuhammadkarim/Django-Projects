@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Kitobni o‘chirish{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/book/confirm_delete.css' %}">
+
+<div class="form-container">
+    <h2>{{ book.title }} kitobini o‘chirish</h2>
+    <p>Siz rostdan ham ushbu kitobni o‘chirmoqchimisiz?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn-submit delete">O‘chirish</button>
+        <a href="{% url 'home' %}" class="btn-submit cancel">Bekor qilish</a>
+    </form>
+</div>
+{% endblock %}

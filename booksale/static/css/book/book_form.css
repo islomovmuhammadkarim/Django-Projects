@@ -1,0 +1,89 @@
+/* Form container */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;                   /* container padding */
+    background-color: #1e1e1e;       /* qorong‘i fon */
+    color: #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+/* Form sarlavhasi */
+.form-container h2 {
+    text-align: center;
+    color: #198754;                   /* yashil sarlavha */
+    margin-bottom: 30px;              /* sarlavha va inputlar orasidagi bo‘sh joy */
+}
+
+/* Form inputlar va textarea */
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="date"],
+.form-container input[type="file"],
+.form-container textarea {
+    width: 100%;
+    padding: 12px;                    /* input ichidagi padding */
+    margin-bottom: 20px;              /* inputlar orasidagi bo‘sh joy */
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    font-size: 16px;
+    box-sizing: border-box;           /* padding va border containerga kiradi */
+}
+
+/* Help text */
+.help-text {
+    display: block;
+    font-size: 12px;
+    color: #aaaaaa;
+    margin-top: -12px;                /* input bilan hizalanishi uchun */
+    margin-bottom: 10px;
+}
+
+/* Xatolik xabarlari */
+.error {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-top: -8px;                 /* input bilan hizalanishi uchun */
+    margin-bottom: 10px;
+}
+
+/* Submit tugma */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;                 /* tugma va inputlar orasidagi bo‘sh joy */
+}
+
+.btn-submit:hover {
+    background-color: #14532d;
+    box-shadow: 0 0 10px #198754;
+}
+
+/* Xabarlar (success yoki error) */
+.message {
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.message.success {
+    background-color: #003300;
+    color: #00ff99;
+}
+
+.message.error {
+    background-color: #330000;
+    color: #ff4d4d;
+}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/book/book_edit.css' %}">
+
+<div class="form-container">
+    <h2>{{ book.title }} – Kitobni Tahrirlash</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn-submit">Saqlash</button>
+    </form>
+</div>
+
+{% endblock %}

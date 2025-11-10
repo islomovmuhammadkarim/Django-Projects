@@ -1,0 +1,99 @@
+/* Container */
+.register-container {
+    max-width: 500px;
+    margin: 40px auto;       /* vertikal va gorizontal markazlash */
+    padding: 30px;           /* ichki padding bir xil */
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    box-sizing: border-box;   /* padding containerga qo‘shiladi */
+}
+
+/* Sarlavha */
+.register-container h1 { 
+    text-align: center; 
+    color: #f44336; 
+    margin-bottom: 20px; 
+}
+
+/* Form inputlar */
+.register-container form input {
+    width: 100%;
+    padding: 10px;           /* ichki padding */
+    margin: 0 0 15px 0;      /* faqat pastga 15px, chap/yuqoriga bir xil */
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #2a2a2a;
+    color: #fff;
+    box-sizing: border-box;  /* padding inputga qo‘shiladi */
+    font-size: 16px;
+}
+
+/* Submit tugma */
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover { 
+    background-color: #d32f2f;  
+}
+
+/* Xatolik xabarlar */
+.message.error {
+    color: #ff4d4d;              /* qizil rang */
+    background-color: #330000;   /* orqa fonga ozgina qizil */
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Muvaffaqiyat xabarlar */
+.message.success {
+    color: #00ff99;             /* yashil rang */
+    background-color: #003300;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Form field wrapper (label + input + xato) */
+.form-field {
+    margin-bottom: 15px;
+}
+
+/* Label */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+/* Responsive dizayn */
+@media screen and (max-width: 600px) {
+    .register-container {
+        padding: 20px;
+        margin: 20px 10px;
+    }
+
+    .register-container form input,
+    .btn-submit {
+        font-size: 14px;
+    }
+}

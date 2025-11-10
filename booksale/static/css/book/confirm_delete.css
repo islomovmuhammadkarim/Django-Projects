@@ -1,0 +1,57 @@
+/* Form container */
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px 25px;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+/* Sarlavha */
+.form-container h2 {
+    color: #198754;
+    margin-bottom: 20px;
+}
+
+/* Matn */
+.form-container p {
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+/* Tugmalar */
+.btn-submit {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+    color: #fff;
+}
+
+/* O‘chirish tugmasi */
+.btn-submit.delete {
+    background-color: #f44336;
+}
+
+.btn-submit.delete:hover {
+    background-color: #d32f2f;
+    box-shadow: 0 0 10px #f44336;
+}
+
+/* Bekor qilish tugmasi */
+.btn-submit.cancel {
+    background-color: #555;
+}
+
+.btn-submit.cancel:hover {
+    background-color: #333;
+}

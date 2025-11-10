@@ -1,0 +1,50 @@
+/* Form container */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px 25px;  /* chap-o‘ng:25px, yuqori-past:30px */
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+/* Form sarlavhasi */
+.form-container h2 {
+    text-align: center;
+    color: #198754;
+    margin-bottom: 25px;
+}
+
+/* Form input, textarea va select */
+.form-container input,
+.form-container textarea,
+.form-container select {
+    width: 100%;
+    padding: 12px 15px;   /* yuqori-past:12px, chap-o‘ng:15px */
+    margin-bottom: 20px;  /* elementlar orasida teng bo‘sh joy */
+    background: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    box-sizing: border-box; /* padding hisobini kenglikka qo‘shadi */
+}
+
+/* Submit tugma */
+.btn-submit {
+    width: 100%;
+    padding: 12px 15px;  /* inputlar bilan moslash */
+    background-color: #198754;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #14532d;
+}

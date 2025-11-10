@@ -1,0 +1,82 @@
+/* Body */
+body {
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #212121; 
+    margin: 0;         
+}
+
+/* Navbar */
+.navbar {
+    background-color: #212121;  
+    padding: 20px 0;
+    box-shadow: 0 4px 12px #198754; /* Navbarga soya */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Brand */
+.brand {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* Navbar links & buttons */
+.nav-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-links a,
+.nav-links .logout-btn {  /* logout tugmasi ham link bilan bir xil */
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #1b1b1b; 
+    border: none;              
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover effekti */
+.nav-links a:hover,
+.nav-links .logout-btn:hover {
+    background-color: #198754;
+    color: #ffffff;
+    box-shadow: 0 0 8px #198754;
+}
+
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 10px 0;
+    color: #ffffff;
+    background-color: #1b1b1b;
+}

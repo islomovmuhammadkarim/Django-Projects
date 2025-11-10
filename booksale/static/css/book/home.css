@@ -1,0 +1,123 @@
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #198754;
+}
+
+/* Books wrapper */
+.books-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Book card */
+.book-card {
+    background-color: #198754;
+    border-radius: 8px;
+    width: 220px;
+    padding: 15px;
+    padding-bottom: 70px;      /* tugmalar uchun joy */
+    text-align: center;
+    position: relative;         /* tugmalarni ichida joylash uchun */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Kitob rasmi */
+.book-cover {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Matn */
+.book-card h3 {
+    font-size: 18px;
+    margin: 10px 0 5px 0;
+    color: #ffffff;
+}
+
+.book-card p {
+    font-size: 14px;
+    margin: 2px 0;
+    color: #f1f1f1;
+}
+
+/* Tugmalar joylashuvi */
+.book-actions {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Universal tugma */
+.btn-books-action {
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #1b1b1b;   /* asosiy tugma */
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Hover – qizil */
+.btn-books-action:hover {
+    background-color: #d32f2f;
+    color: #ffffff;
+    box-shadow: 0 0 8px #d32f2f;
+}
+
+/* Korzinka – sariq */
+.btn-books-action.cart {
+    background-color: #ff9800;
+}
+
+.btn-books-action.cart:hover {
+    background-color: #e68900;
+    box-shadow: 0 0 8px #e68900;
+}
+
+/* Delete tugmasi – qizil */
+.btn-books-action.delete {
+    background-color: #f44336;
+}
+
+.btn-books-action.delete:hover {
+    background-color: #d32f2f;
+    box-shadow: 0 0 8px #d32f2f;
+}
+
+/* Edit tugmasi (asosiysi qora bo‘ladi) */
+.btn-books-action.edit {
+    background-color: #1b1b1b;
+}
+
+/* Responsiv */
+@media screen and (max-width: 768px) {
+    .book-card {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .book-card {
+        width: 100%;
+    }
+}

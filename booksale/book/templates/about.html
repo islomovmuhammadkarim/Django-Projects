@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About - My Blog{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+<div class="about-container container">
+    <h1>Biz haqimizda</h1>
+    <p>
+        <strong>My Blog</strong> – kitoblar va adabiyot sevuvchilar uchun maxsus sayt. 
+        Bu yerda siz turli xil kitoblar, ularning mualliflari va tavsiflari bilan tanishishingiz mumkin.
+    </p>
+    
+    <h2>Bizning Maqsadimiz</h2>
+    <p>
+        Bizning maqsadimiz – o‘quvchilarga zamonaviy va klassik adabiyotlarni taqdim etish, 
+        kitoblar bilan qiziqishni oshirish va foydalanuvchilarga qulay muhit yaratishdir.
+    </p>
+
+    <h2>Bizning Jamoa</h2>
+    <p>
+        Saytimiz kichik, lekin tajribali jamoa tomonidan boshqariladi. 
+        Har bir kitob diqqat bilan tanlanadi va tavsifi aniq, foydalanuvchiga qulay bo‘lishi uchun tayyorlanadi.
+    </p>
+
+    <h2>Kontakt</h2>
+    <p>
+        Siz biz bilan bog‘lanishingiz mumkin: <a href="mailto:info@myblog.com">info@myblog.com</a>
+    </p>
+</div>
+{% endblock %}
