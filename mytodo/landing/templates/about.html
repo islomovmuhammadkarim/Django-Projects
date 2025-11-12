@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About - MyTodo{% endblock %}
+
+{% block content %}
+<section class="about-section">
+    <div class="about-top">
+        <!-- Chap tomon: rasm + social -->
+        <div class="about-left">
+
+            {% if about.profile_image %}
+                <img src="{{ about.profile_image.url }}" alt="{{ about.full_name }}" class="profile-img">
+            {% else %}
+                <img src="{% static 'images/default.jpg' %}" alt="Default Profile" class="profile-img">
+            {% endif %}
+
+            <div class="social-links">
+                {% if about.social_github %}
+                <a href="{{ about.social_github }}" target="_blank"><img src="{% static 'images/github.png' %}" alt="GitHub"></a>
+                {% endif %}
+                {% if about.social_linkedin %}
+                <a href="{{ about.social_linkedin }}" target="_blank"><img src="{% static 'images/linkedin.png' %}" alt="Twitter"></a>
+                {% endif %}
+                {% if about.social_facebook %}
+                <a href="{{ about.social_facebook }}" target="_blank"><img src="{% static 'images/facebook.png' %}" alt="LinkedIn"></i></a>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <!-- O'ng tomon: ism + description -->
+        <div class="about-right">
+            <h2 class="about-name">{{about.first_name}} {{about.last_name}}</h2>
+            <p class="about-bio">
+                {{ about.bio|linebreaks }}
+            </p>
+        </div>
+    </div>
+
+    <!-- Pastki qism: Skills, Education, Experience -->
+    <div class="about-bottom">
+        <div class="about-skills">
+            <h3>Skills</h3>
+            <ul>
+            {{ about.skills|linebreaks }}
+            </ul>
+        </div>
+
+        <div class="about-education">
+            <h3>University</h3>
+            <p>{{about.university}}</p>
+            <p>Degree:{{about.degree}}</p>
+            <p>Graduatio year:{{about.graduation_year}}</p>
+        </div>
+
+        <div class="about-experience">
+            <h3>Experience</h3>
+            <p>{{ about.expirence|linebreaks }}</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+
+{% block title %}Home - MyTodo{% endblock %}
+
+{% block content %}
+    <section class="hero-section">
+        <div class="hero-text">
+            <h1 class="hero-title">MyTodo – Organize Your Day</h1>
+            <p class="hero-description">
+            Manage all your tasks in one place. Simple, fast, and designed to help you 
+            focus on what really matters. Sign up today and start achieving more.
+            </p>
+            <button class="cta-button">Get start</button>
+        </div>
+        
+        <div class="hero-content">
+            <div class="clipboard-container">
+            <div class="clipboard">
+                <div class="clipboard-clip"></div>
+                <div class="clipboard-body">
+                <div class="task-item completed">
+                    <div class="checkbox checked"></div>
+                    <div class="task-line"></div>
+                </div>
+                <div class="task-item">
+                    <div class="checkbox"></div>
+                    <div class="task-line"></div>
+                </div>
+                <div class="task-item">
+                    <div class="checkbox"></div>
+                    <div class="task-line"></div>
+                </div>
+                </div>
+            </div>
+            </div>
+            
+            <div class="description-text">
+            <p>
+                MyTodo yordamida har kuni vazifalaringizni 
+                samarali boshqarishingiz mumkin. Har bir vazifani 
+                yaratish, tahrirlash, bajarilganligini belgilash va 
+                o'chirish imkoniyati mavjud.
+            </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyTodo - Organize Your Day</title>
+    <link rel="stylesheet" href="{% static 'css/landing/landing.css' %}">
+</head>
+
+<body>
+<!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+        <div class="nav-brand">MyTodo</div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}" class="nav-link">Home</a>
+            <a href="{% url 'about' %}" class="nav-link">About</a>
+            <a href="{% url 'contact' %}" class="nav-link">Contact</a>
+            <button class="nav-button">Login</button>
+        </div>
+        </nav>
+    </header>
+<!-- Content -->
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <script src="{% static 'js/landing/landing.js' %}"></script>
+</body>
+</html>
