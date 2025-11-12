@@ -1,5 +1,43 @@
-{% extends 'base.html'%}
-{% block content %}
-<p>If you have any questions or feedback, feel free to reach out to us at <a href="mailto:support@example.com">support@example.com</a>.</p>
+{% extends 'base.html' %}
+{% load static %}
 
+{% block title %}Contact - MyTodo{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/landing/contact.css' %}">
+    <section class="contact-section">
+        <div class="contact-container">
+
+            <!-- Chap taraf: Ma’lumotlar -->
+            <div class="contact-info">
+            <h2>Let's Get in Touch</h2>
+            <p>If you have any questions or collaboration ideas, feel free to contact me.</p>
+
+            <ul>
+                <li><strong>Email:</strong> yourname@example.com</li>
+                <li><strong>Phone:</strong> +998 90 123 45 67</li>
+                <li><strong>Location:</strong> Tashkent, Uzbekistan</li>
+            </ul>
+
+            <div class="contact-socials">
+                <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            </div>
+
+            <!-- O‘ng taraf: Forma -->
+            <div class="contact-form">
+            {% if success %}
+                <div class="success-message">✅ Your message has been sent successfully!</div>
+            {% endif %}
+
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+            </div>
+        </div>
+    </section>
 {% endblock %}
