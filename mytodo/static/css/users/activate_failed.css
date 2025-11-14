@@ -1,0 +1,49 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+}
+
+.register-form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.register-form h2 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.register-form p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* Button group: yonma-yon */
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.register-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background-color: #333;
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 2px solid #333;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.register-btn:hover {
+    background-color: #555;
+    border-color: #555;
+}

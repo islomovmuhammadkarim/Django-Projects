@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/users/register.css' %}">
+
+<div class="register-container">
+    <div class="register-form">
+        <h2>Ro‘yxatdan o‘tish</h2>
+
+        {% if error %}
+        <div class="error-message">{{ error }}</div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-field">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="form-field">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="form-field">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+            </div>
+            <div class="form-field">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+            </div>
+            <div class="form-field">
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+            <small class="password-help">Kamida 8 ta belgidan iborat, raqam va harf bo‘lishi kerak</small>
+            </div>
+
+            <div class="form-field">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+            <small class="password-help">Parolni tasdiqlang</small>
+            </div>
+
+
+            <button type="submit" class="register-btn">Ro‘yxatdan o‘tish</button>
+        </form>
+
+        <p class="login-link">
+            Akkountingiz bormi? <a href="{% url 'login' %}">Kirish</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

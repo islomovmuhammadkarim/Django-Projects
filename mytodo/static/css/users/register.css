@@ -1,0 +1,114 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #f8f9fa;
+    padding: 2rem;
+}
+
+.register-form {
+    background-color: #fff;
+    padding: 3rem 2.5rem; /* Desktop uchun biroz kengaytirildi */
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    width: 500px; /* Desktop uchun kengroq */
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.register-form h2 {
+    font-size: 2.2rem; /* Kattaroq font desktop uchun */
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.form-field {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.form-field label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.form-field input {
+    width: 100%;
+    padding: 0.85rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-field input:focus {
+    border-color: #555;
+    outline: none;
+}
+
+.register-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #333; /* Tugma rangi */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.15rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-btn:hover {
+    background-color: #555; /* Hover rangi ozgina quyuqroq */
+}
+
+.login-link {
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.login-link a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+    color: 555;
+}
+.error-message {
+    color: #ff4d4f;
+    background-color: #ffe6e6;
+    border-left: 4px solid #ff4d4f;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.password-help {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+
+
+/* Responsive */
+@media (max-width: 992px) {
+    .register-form {
+        width: 400px;
+        padding: 2.5rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .register-form {
+        width: 95%;
+        padding: 2rem 1.5rem;
+    }
+}

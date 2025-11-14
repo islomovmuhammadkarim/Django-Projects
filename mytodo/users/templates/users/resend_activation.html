@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/users/resend.css' %}">
+
+<div class="resend-container">
+    <!-- Verification icon -->
+    <div class="verification-icon">
+        <img src="{% static 'images/verification_icon.png' %}" alt="Verification Icon">
+    </div>
+
+    <!-- Text and form -->
+    <div class="resend-text">
+        <h2>Aktivatsiya linkini qayta yuborish</h2>
+        <p>Iltimos, email manzilingizni kiriting:</p>
+
+        {% if error %}
+            <p class="error-msg">{{ error }}</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="Emailingiz" required>
+            <button type="submit" class="resend-btn">Qayta yuborish</button>
+        </form>
+
+        <a href="{% url 'login' %}" class="login-btn">Kirish sahifasiga qaytish</a>
+    </div>
+</div>
+{% endblock %}

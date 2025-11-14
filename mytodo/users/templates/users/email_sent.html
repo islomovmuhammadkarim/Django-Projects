@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/users/email_sent.css' %}">
+
+<div class="email-sent-container">
+    <div class="email-sent-text">
+        <h2>Email yuborildi!</h2>
+        <p>
+            Akkountingizni faollashtirish uchun emailingizga aktivatsiya linki yuborildi.
+            <br><br>
+            Iltimos, <b>Gmail</b>ga kirib, “Inbox” yoki “Spam” bo‘limini tekshiring.
+        </p>
+
+        <a href="https://mail.google.com" class="email-btn" target="_blank">Gmailni ochish</a>
+        <a href="{% url 'resend_activation' %}" class="email-btn">Qayta yuborish</a>
+        <a href="{% url 'login' %}" class="email-btn">Kirish sahifasiga qaytish</a>
+    </div>
+
+    <div class="email-sent-image">
+        <img src="{% static 'images/email_sent.png' %}" alt="Email illustration">
+    </div>
+</div>
+{% endblock %}

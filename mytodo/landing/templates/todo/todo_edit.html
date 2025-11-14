@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edit ToDo - MyTodo{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/todo/todo_edit.css' %}">
+
+<section class="edit-todo-section">
+    <div class="edit-todo-container">
+    
+        <h2>Vazifani tahrirlash </h2>
+        <h3>Vazifa nomi:"<strong>{{ todo.title }}"</h3>
+        
+
+        <!-- Edit form -->
+        <form method="POST" class="edit-todo-form">
+            {% csrf_token %}
+            {{ form.title }}
+            {{ form.deadline }}
+            <div class="edit-btn-group">
+                <button type="submit" class="btn-save">Save</button>
+                <a href="{% url 'todo_delete' todo.id %}" class="btn-delete" onclick="return confirm('Are you sure you want to delete this task?');">Delete</a>
+                <a href="{% url 'todo' %}" class="btn-cancel">Todo List</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

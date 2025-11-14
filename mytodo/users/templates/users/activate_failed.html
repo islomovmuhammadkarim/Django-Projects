@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/users/activate_failed.css' %}">
+<div class="register-container">
+    <div class="register-form">
+        <h2>OOPs! Hatolik yuz berdi</h2>
+        <p>
+            {% if error %}
+                {{ error }} <br>
+                Iltimos, emailingizni tekshiring yoki Username to‘g‘ri kiritilganiga ishonch hosil qiling.
+            {% else %}
+                Aktivatsiya linki noto‘g‘ri yoki foydalanuvchi mavjud emas.
+            {% endif %}
+        </p>
+
+        <div class="button-group">
+            <a href="{% url 'resend_activation' %}" class="register-btn">Qayta yuborish</a>
+            <a href="{% url 'login' %}" class="register-btn">Kirish</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

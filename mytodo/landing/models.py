@@ -1,12 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
-
-class ContactMessage(models.Model):
-    name = models.CharField(max_length=255)
-    email = models.EmailField()
-    message = HTMLField()  # This works if TinyMCE is installed
-
+from datetime import date
+from django.utils import timezone
 
 class About(models.Model):
     first_name = models.CharField(max_length=30)
@@ -35,3 +31,23 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"Message from {self.name} <{self.email}>"
+
+
+
+
+
+class Todo(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    completed = models.BooleanField(default=False)
+    deadline = models.DateField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def days_left(self):
+        if self.deadline:
+            delta = (self.deadline - timezone.localdate()).days
+            return delta
+        return None
+
+    def __str__(self):
+        return f"{self.title} ({self.user.username})"

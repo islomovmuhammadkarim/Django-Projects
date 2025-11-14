@@ -1,0 +1,118 @@
+Aha, tushundim! 😊 Sizning loyihangiz bir nechta bo‘limlardan iborat bo‘lib, ular bir-biri bilan bog‘langan. Keling, uni tizimli va bosqichma-bosqich reja qilaylik, shunda dasturlash oson bo‘ladi va keyinchalik hamma narsa integratsiya qilinadi.
+
+---
+
+## 1️⃣ Loyiha tuzilishi (Overview)
+
+### Bo‘limlar:
+
+1. **Profile**
+
+   * Foydalanuvchining asosiy ma’lumotlari: `username`, `first_name`, `last_name`.
+   * Qo‘shimcha maydonlar: `bio`, `fanlar` (ko‘p qiymatli yoki JSON).
+   * Ko‘rsatadi: foydalanuvchining barcha To-Do, Homework va Pomodoro natijalari.
+
+2. **To-Do List**
+
+   * Model: `Task`
+   * Maydonlar:
+
+     * `title` — To-Do nomi
+     * `description` — batafsil izoh
+     * `due_time` — vaqt belgilash
+     * `status` — bajarilgan / bajarilmagan
+     * `user` yoki `profile` bilan ForeignKey
+   * Funksiyalar:
+
+     * CRUD (create, edit, delete)
+     * Home page da list ko‘rinadi
+     * Status update (checkbox)
+
+3. **HomeworkTime (O‘rganayotgan narsalar)**
+
+   * Model: `Subject`
+   * Maydonlar:
+
+     * `name` — fan nomi (masalan, Python, C++)
+     * `total_time` — jami o‘qilgan vaqt
+     * `user` yoki `profile` bilan ForeignKey
+   * Har bir subject ichida **Pomodoro session** saqlanadi
+
+4. **Pomodoro Timer**
+
+   * Model: `PomodoroSession`
+   * Maydonlar:
+
+     * `subject` — qaysi fan uchun
+     * `duration` — qancha vaqt ishladi
+     * `start_time` / `end_time`
+     * `completed` — true / false
+   * Frontend:
+
+     * Timer ishga tushadi, teskari sanaydi
+     * To‘xtatilganda “add” button paydo bo‘ladi
+     * Add bosilganda duration `Subject.total_time` ga qo‘shiladi
+
+---
+
+## 2️⃣ Model bog‘lanishlari
+
+```
+Profile
+ ├── User (OneToOne)
+ ├── Tasks (ForeignKey to Profile)
+ └── Subjects (ForeignKey to Profile)
+        └── PomodoroSessions (ForeignKey to Subject)
+```
+
+* Shu tartib foydalanuvchiga barcha ma’lumotlar bir joyda saqlanadi.
+* To-Do va HomeworkTime alohida bo‘ladi, lekin Profile bilan bog‘langan.
+
+---
+
+## 3️⃣ Home page
+
+* Foydalanuvchi login qilganda:
+
+  * **To-Do list** ko‘rinadi
+  * Task qo‘shish, tahrirlash, o‘chirish mumkin
+* Har bir Task checkbox orqali status o‘zgaradi
+
+---
+
+## 4️⃣ HomeworkTime page
+
+* Foydalanuvchi yangi fan qo‘shadi (`Python`, `C++` va boshqalar)
+* Har bir fan uchun Pomodoro timer:
+
+  * Ishga tushadi, teskari sanaydi
+  * To‘xtatilganda “Add” button paydo bo‘ladi
+  * Add bosilganda `total_time` ga qo‘shiladi
+* Fanlar o‘z ichida vaqtlar hisoblanadi
+
+---
+
+## 5️⃣ Profile page
+
+* Foydalanuvchining barcha ma’lumotlarini ko‘rsatadi:
+
+  * To-Do list
+  * HomeworkTime list (fanlar + jami o‘qilgan vaqt)
+  * Pomodoro sessionlar natijasi
+
+---
+
+## 6️⃣ Bosqichma-bosqich ishlash
+
+1. **Profile modeli va CRUD**
+2. **To-Do List modeli va CRUD**
+3. **HomeworkTime modeli**
+4. **Pomodoro timer Frontend + Backend logika**
+5. **Integratsiya Profile bilan To-Do va HomeworkTime**
+6. **Home page va Profile page ko‘rinishi**
+
+---
+
+Agar xohlasa, men siz uchun **`models.py` da Profile, Task, Subject va PomodoroSession modelini** to‘liq yozib beraman va ularni admin panelga qo‘shib, Django ORM orqali ishlashga tayyorlayman.
+
+Shuni qilaylikmi?
