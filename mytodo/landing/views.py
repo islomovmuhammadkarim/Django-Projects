@@ -5,7 +5,7 @@ from .forms import ContactMessageForm, TodoForm
 from datetime import date, timedelta
 
 # Home view: ToDo + Homework
-@login_required
+@login_required(login_url='login')
 def home(request):
     todos = Todo.objects.filter(user=request.user).order_by('deadline')
     todo_form = TodoForm()
@@ -38,7 +38,7 @@ def home(request):
 
 
 
-@login_required
+@login_required(login_url='login')
 def todo_list(request):
     # Foydalanuvchining barcha ToDo’lari deadline bo‘yicha tartiblangan
     todos = Todo.objects.filter(user=request.user).order_by('deadline')
@@ -62,7 +62,7 @@ def todo_list(request):
 
 
 # ToDo edit
-@login_required
+@login_required(login_url='login')
 def todo_edit(request, todo_id):
     todo = get_object_or_404(Todo, id=todo_id, user=request.user)
     if request.method == 'POST':
@@ -76,7 +76,7 @@ def todo_edit(request, todo_id):
 
 
 # ToDo delete
-@login_required
+@login_required(login_url='login')
 def todo_delete(request, todo_id):
     todo = get_object_or_404(Todo, id=todo_id, user=request.user)
     todo.delete()
