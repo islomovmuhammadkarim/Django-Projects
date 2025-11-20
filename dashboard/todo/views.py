@@ -1,34 +1,42 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import Todo,TimeCategory
 from django.db.models import Case, When, IntegerField
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 
+@login_required
 def dashboard_view(request):
-    todos = Todo.objects.annotate(
+    user = request.user
+    todos = Todo.objects.filter(user=user).annotate(
         priority_order=Case(
             When(priority='high', then=1),
             When(priority='medium', then=2),
             When(priority='low', then=3),
             output_field=IntegerField(),
         )
-    ).order_by('completed', 'priority_order')  # completed False birinchi, keyin True; priority bo‘yicha sort
+    ).order_by('completed', 'priority_order')
 
-    return render(request, 'todo/dashboard.html', {'todos': todos})
+    # Dashboard Stats
+    total_tasks = todos.count()
+    completed_tasks = todos.filter(completed=True).count()
+    in_progress_tasks = todos.filter(completed=False).count()
 
+    # HomeTime uchun jami vaqt
+    total_minutes = TimeCategory.objects.filter(user=user).aggregate(total=Sum('total_minutes'))['total'] or 0
+    total_time = f"{total_minutes // 60} soat {total_minutes % 60} min"
 
+    context = {
+        'todos': todos,
+        'dashboard_stats': {
+            'total_tasks': total_tasks,
+            'completed_tasks': completed_tasks,
+            'in_progress_tasks': in_progress_tasks,
+            'total_time': total_time
+        }
+    }
 
-def mytodo_view(request):
-    # Annotate orqali priority uchun numeric order beramiz
-    todos = Todo.objects.annotate(
-        priority_order=Case(
-            When(priority='high', then=1),
-            When(priority='medium', then=2),
-            When(priority='low', then=3),
-            output_field=IntegerField(),
-        )
-    ).order_by('completed', 'priority_order')  # completed False birinchi, keyin True; priority bo‘yicha sort
-
-    return render(request, 'todo/mytodo.html', {'todos': todos})
-
+    return render(request, 'todo/dashboard.html', context)
 
 
 def add_todo(request):
@@ -44,39 +52,13 @@ def toggle_todo(request, todo_id):
     todo = Todo.objects.get(id=todo_id)
     todo.completed = not todo.completed
     todo.save()
-    return redirect('mytodo')
+    return redirect('dashboard')
 
 
 def delete_todo(request, todo_id):
     todo = Todo.objects.get(id=todo_id)
     todo.delete()
-    return redirect('mytodo')
-
-
-
-def stats_view(request):
-    todos = Todo.objects.all()
-    total = todos.count()
-    completed_count = todos.filter(completed=True).count()
-    incomplete_count = todos.filter(completed=False).count()
-
-    priority_counts = {
-        'high': todos.filter(priority='high').count(),
-        'medium': todos.filter(priority='medium').count(),
-        'low': todos.filter(priority='low').count(),
-    }
-
-    context = {
-        'total': total,
-        'completed_count': completed_count,
-        'incomplete_count': incomplete_count,
-        'priority_counts': priority_counts,
-    }
-
-    return render(request, 'todo/stats.html', context)
-
-
-
+    return redirect('dashboard')
 
 
 def hometimer_view(request):
@@ -119,3 +101,42 @@ def hometimer_view(request):
         cat.minutes = cat.total_minutes % 60
 
     return render(request, 'todo/hometimer.html', {'categories': categories})
+
+
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from .models import TimeCategory
+
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from .models import TimeCategory
+
+# views.py
+# @login_required   # test vaqtida komment qiling
+def get_time_categories(request):
+    user = request.user
+    categories = TimeCategory.objects.filter(user=user)
+
+    data = [
+        {
+            "name": cat.name,
+            "hours": cat.total_minutes // 60,
+            "minutes": cat.total_minutes % 60,
+            "icon": "📌"
+        }
+        for cat in categories
+    ]
+    return JsonResponse({"categories": data})
+
+
+
+@login_required
+def important_tasks_api(request):
+    tasks = Todo.objects.filter(user=request.user, priority='high', completed=False)
+    
+    data = [
+        {"title": t.title, "priority": t.priority, "completed": t.completed}
+        for t in tasks
+    ]
+    
+    return JsonResponse({"tasks": data})

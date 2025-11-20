@@ -1,0 +1,104 @@
+/* General container */
+.stats-container, #mytodo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+    margin-top: 10px; /* qo‘shildi */
+}
+
+
+/* Stat card styles */
+.stat-card {
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Different background colors for each card */
+.stat-card:nth-child(1) { background-color: #4f46e5; color: #fff; }
+.stat-card:nth-child(2) { background-color: #10b981; color: #fff; }
+.stat-card:nth-child(3) { background-color: #f59e0b; color: #fff; }
+.stat-card:nth-child(4) { background-color: #ef4444; color: #fff; }
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.stat-card-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.stat-card-title {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.stat-card-icon {
+    font-size: 22px;
+}
+
+/* Stat value */
+.stat-card-value {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* MyTodo styles */
+.todo-card {
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.todo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.todo-card-title {
+    font-weight: 500;
+}
+
+.todo-card-icon {
+    font-size: 18px;
+    color: #4f46e5;
+}
+
+/* Scrollable container */
+.stats-container, #mytodo-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Scrollbar style for modern look */
+.stats-container::-webkit-scrollbar,
+#mytodo-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.stats-container::-webkit-scrollbar-thumb,
+#mytodo-container::-webkit-scrollbar-thumb {
+    background-color: rgba(79,70,229,0.6);
+    border-radius: 3px;
+}
+
+.stats-container::-webkit-scrollbar-track,
+#mytodo-container::-webkit-scrollbar-track {
+    background-color: transparent;
+}

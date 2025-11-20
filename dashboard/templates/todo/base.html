@@ -10,7 +10,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/mytodo.css' %}">
-    
+    <link rel="stylesheet" href="{% static 'css/rightsidebar.css' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}"> 
 </head>
 <body>
@@ -19,28 +19,14 @@
         <aside class="sidebar">
             <div class="logo">
                 <i class="fas fa-tasks"></i>
-                <span>MyDashboard</span>
+                <span>Dashboard</span>
             </div>
-            
-            
             <nav>
                 <ul class="nav-menu">
                     <li class="nav-item {% if request.path == '/' or request.path == '/dashboard/' %}active{% endif %}">
                         <a href="{% url 'dashboard' %}" style="display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none;">
                             <i class="fas fa-home"></i>
                             <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item {% if 'mytodo' in request.path %}active{% endif %}">
-                        <a href="{% url 'mytodo' %}" style="display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none;">
-                            <i class="fas fa-list-check"></i>
-                            <span>MyTodo</span>
-                        </a>
-                    </li>
-                    <li class="nav-item {% if 'stats' in request.path %}active{% endif %}">
-                        <a href="{% url 'stats' %}" style="display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none;">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Statistika</span>
                         </a>
                     </li>
                      <li class="nav-item {% if 'hometimer' in request.path %}active{% endif %}">
@@ -59,27 +45,79 @@
             </nav>
         </aside>
 
-        <main class="main-content">
-            {% block content %}
-            {% endblock %}
-        </main>
-
-        <aside class="right-sidebar">
-            {% block right_sidebar %}
-            
-            <section class="clock-section">
-              
-            </section>
+            <main class="main-content">
+                {% block content %}
+                {% endblock %}
+            </main>
 
 
 
-            {% endblock %}
-        </aside>
+            <aside class="right-sidebar">
+        {% block right_sidebar %}
+        
+        <!-- Soat bo'limi -->
+        <!-- Right Sidebar Clock Section -->
+        <section class="clock-section fade-in">
+        <div class="clock-wrapper">
+            <div class="clock-circle">
+                <!-- SVG aylana progress -->
+                <svg class="progress-ring" width="160" height="160">
+                    <circle class="progress-ring__background" stroke="#eee" stroke-width="10" fill="transparent" r="70" cx="80" cy="80"/>
+                    <circle class="progress-ring__circle" stroke="#4CAF50" stroke-width="10" fill="transparent" r="70" cx="80" cy="80" stroke-linecap="round"/>
+                </svg>
+
+                <!-- Soat raqami -->
+                <div id="time" class="time-display">00:00:00</div>
+            </div>
+        </div>
+        <div id="date" class="date-display">01 Jan 2025, Monday</div>
+    </section>
+
+    <section class="time-tracker-section">
+        <h3 class="section-title">HomeTime Tracker</h3>
+        <div class="time-categories" id="time-categories">
+            <!-- JS orqali dinamik qo‘shiladi -->
+        </div>
+    </section>
+
+
+
+    <section class="important-tasks-section">
+            <h3 class="section-title">Muhim Vazifalar</h3>
+            <div class="tasks-list" id="tasks-list">
+                <!-- JS orqali to‘ldiriladi -->
+            </div>
+    </section>
+
+        {% endblock %}
+    </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
     <script src="{% static 'js/base.js' %}"></script>
     <script src="{% static 'js/mytodo.js' %}"></script>
+    <script src="{% static 'js/clock.js' %}"></script>
+    <script src="{% static 'js/hometimebase.js' %}"></script>
+    <script src="{% static 'js/importanttasks.js' %}"></script>
+
 </body>
 </html>
 

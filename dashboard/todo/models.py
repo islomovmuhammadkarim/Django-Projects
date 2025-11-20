@@ -3,27 +3,26 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Todo(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # Vazifa sarlavhasi
+    from django.contrib.auth.models import User
+from django.db import models
+
+class Todo(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)  # eski row’lar uchun default
     title = models.CharField(max_length=200)
     
-    # Ustuvorlik tanlovlari
     PRIORITY_CHOICES = [
         ('high', 'Yuqori'),
         ('medium', 'Oʻrta'),
         ('low', 'Past'),
     ]
-    priority = models.CharField(max_length=10, 
-                                choices=PRIORITY_CHOICES, 
-                                default='medium')
+    priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES, default='medium')
                                 
     completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        # Admin paneli va boshqa joylar uchun title ni qaytaramiz
         return self.title
-        
+
     class Meta:
         ordering = ['-created_at']
 
@@ -41,3 +40,5 @@ class TimeCategory(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.total_minutes} min)"
+
+

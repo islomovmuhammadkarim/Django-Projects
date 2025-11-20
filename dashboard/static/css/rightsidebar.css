@@ -1,0 +1,200 @@
+.clock-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.clock-circle {
+    width: 160px;
+    height: 160px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg); /* boshlanish yuqoridan */
+}
+
+.progress-ring__background {
+    stroke: #eee;
+}
+
+.progress-ring__circle {
+    stroke: #4CAF50;
+    stroke-dasharray: 439.82; /* 2πr, r=70 */
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s linear;
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+}
+
+.time-display {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--text-primary, #333);
+    text-align: center;
+    z-index: 1;
+}
+
+.date-display {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #555);
+    text-align: center;
+    margin-top: 5px;
+    z-index: 1;
+}
+
+
+
+.time-tracker-section {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.time-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.time-category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #f5f7fa, #e4ebf0);
+    transition: transform 0.2s;
+}
+
+.time-category:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.category-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: #444;
+}
+
+.category-icon {
+    font-size: 18px;
+}
+
+.category-time {
+    font-weight: bold;
+    color: #222;
+}
+
+
+
+
+
+
+.right-sidebar {
+    width: 300px;
+    padding: 20px;
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-left: 1px solid #e5e7eb;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Clock */
+.clock-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+.progress-ring__circle {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 0.5s linear;
+}
+.clock-time {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Date */
+.date-time {
+    text-align: center;
+    margin-top: 8px;
+    color: #4b5563;
+    font-size: 14px;
+}
+
+/* Time Tracker */
+.time-tracker-section, .important-tasks-section {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid #e5e7eb;
+}
+
+.time-tracker-section .time-categories, 
+.important-tasks-section .tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.time-category, .task-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #e5e7eb;
+    align-items: center;
+}
+.time-category:last-child, .task-item:last-child {
+    border-bottom: none;
+}
+
+.category-name, .task-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.category-icon, .task-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0e7ff;
+    font-size: 14px;
+}
