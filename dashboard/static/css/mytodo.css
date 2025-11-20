@@ -1,0 +1,379 @@
+/* ==================================================================== */
+/* 0. ROOT VA GLOBAL O'ZGARUVCHILAR */
+/* ==================================================================== */
+:root {
+    --primary-color: #333333;   /* quyuq kulrang */
+    --secondary-color: #555555; /* o‘rta kulrang */
+    --accent-color: #000000;
+    --success-color: #4caf50;   /* green */
+    --warning-color: #ff9800;   /* orange */
+    --bg-primary: #ffffff;      /* oq */
+    --bg-secondary: #f5f5f5;    /* beige light */
+    --bg-tertiary: #e0e0e0;     /* light gray */
+    --text-primary: #222222;    /* quyuq kulrang */
+    --text-secondary: #666666;  /* o‘rta kulrang */
+    --border-color: #dddddd;
+    --hover-bg: #f0f0f0;
+    --bavy: #4b7bec;            /* bavy blue */
+    --teal: #20bf6b;            /* teal */
+    --skyblue: #6bc1ff;         /* sky blue */
+    --beige: #f7d794;           /* soft beige */
+    --white: #ffffff;
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-container {
+    display: flex;
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* ==================================================================== */
+/* 1. ASOSIY KONTENT STILLARI */
+/* ==================================================================== */
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.todo-section {
+    background-color: var(--bg-primary);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+}
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* ==================================================================== */
+/* 2. FORMA VA INPUT STILLARI */
+/* ==================================================================== */
+
+.todo-input-container {
+    /* Asosiy konteyner: gorizontal joylashish */
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+.todo-input-container input[type="text"] {
+    flex: 3; /* Eng katta joyni egallaydi */
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    /* ... qolgan stillar ... */
+}
+
+.todo-input-container input[type="text"]:focus {
+    border-color: var(--bavy); 
+    box-shadow: 0 0 5px rgba(75, 123, 236, 0.5); 
+    outline: none;
+}
+
+.todo-input-container select {
+    flex: 1; /* O'rta joyni egallaydi */
+    padding: 14px; 
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    /* ... qolgan stillar ... */
+}
+
+.todo-input-container .add-btn {
+    /* O'zgarmas kenglikda qoladi */
+    padding: 14px 25px; 
+    background-color: var(--bavy);
+    color: var(--white);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background-color: #3867d6; 
+}
+
+
+/* ==================================================================== */
+/* 3. VAZIFALAR RO'YXATI (TODO LIST) STILLARI */
+/* ==================================================================== */
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.empty-list-message {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.todo-item {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.todo-item:hover {
+    transform: translateX(5px);
+    background-color: var(--hover-bg);
+}
+
+.todo-item.completed {
+    opacity: 0.6;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+}
+
+/* Checkbox */
+.toggle-link {
+    text-decoration: none; /* a tagidagi pastki chiziqni olib tashlash */
+}
+
+.todo-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Kichrayib ketmasligi uchun */
+}
+
+.todo-checkbox.checked {
+    background-color: var(--bavy);
+    border-color: var(--bavy);
+}
+
+.todo-checkbox.checked::after {
+    content: '\f00c'; /* Font Awesome check mark */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: white;
+    font-size: 12px;
+}
+
+.todo-text {
+    flex: 1; /* Matnning maksimal joyni egallashini ta'minlaydi */
+    color: var(--text-primary);
+    font-weight: 500;
+    word-break: break-word; /* Uzoq so'zlarni keyingi qatorga o'tkazish */
+}
+
+/* Priority Tags */
+.todo-priority {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    flex-shrink: 0; /* Kichrayib ketmasligi uchun */
+}
+
+.priority-high {
+    background-color: #ff6b6b; /* red */
+    color: white;
+}
+
+.priority-medium {
+    background-color: var(--beige); 
+    color: #333333;
+}
+
+.priority-low {
+    background-color: var(--skyblue); 
+    color: #ffffff;
+}
+
+/* Delete Button */
+.delete-btn {
+    margin-left: auto; /* O'ng tomonga surish */
+    color: #e74c3c;   
+    font-size: 16px;
+    transition: color 0.3s;
+    flex-shrink: 0; /* Kichrayib ketmasligi uchun */
+}
+
+.delete-btn:hover {
+    color: #c0392b;   
+}
+
+/* Empty List Message */
+.empty-list-message {
+    text-align: center;           /* Markazlashtirish */
+    font-size: 18px;              /* O‘rta kattalik */
+    color: var(--text-secondary); /* O‘rta kulrang */
+    font-weight: 500;             /* Biroz qalinroq */
+    padding: 30px 0;              /* Yuqori va pastki bo‘sh joy */
+    border: 2px dashed var(--border-color); /* Dashed border bilan ajratish */
+    border-radius: 10px;          /* Yumaloq burchaklar */
+    background-color: var(--bg-tertiary); /* Engil fon rangi */
+    margin-top: 20px;             /* Yuqoridan bo‘sh joy */
+    transition: all 0.3s ease;
+}
+
+/* Hover effekti (ixtiyoriy) */
+.empty-list-message:hover {
+    background-color: var(--hover-bg);
+    color: var(--primary-color);
+    transform: scale(1.02);
+}
+/* Empty List Message */
+.empty-list-message {
+    text-align: center;           /* Markazlashtirish */
+    font-size: 18px;              /* O‘rta kattalik */
+    color: var(--text-secondary); /* O‘rta kulrang */
+    font-weight: 500;             /* Biroz qalinroq */
+    padding: 30px 0;              /* Yuqori va pastki bo‘sh joy */
+    border: 2px dashed var(--border-color); /* Dashed border bilan ajratish */
+    border-radius: 10px;          /* Yumaloq burchaklar */
+    background-color: var(--bg-tertiary); /* Engil fon rangi */
+    margin-top: 20px;             /* Yuqoridan bo‘sh joy */
+    transition: all 0.3s ease;
+}
+
+/* Hover effekti (ixtiyoriy) */
+.empty-list-message:hover {
+    background-color: var(--hover-bg);
+    color: var(--primary-color);
+    transform: scale(1.02);
+}
+
+
+/* ==================================================================== */
+/* 4. RESPONSIVE DIZAYN (MEDIA QUERIES) */
+/* ==================================================================== */
+
+/* Katta ekranlar (1024px dan kichik) */
+@media (max-width: 1024px) {
+    .app-container { 
+        flex-direction: column; /* Yonma-yon sidebar va asosiy kontentni ustma-ust qiladi */
+    }
+    .sidebar { 
+        width: 100%; /* Sidebar to'liq kenglikni egallaydi */
+    }
+}
+
+/* O'rta ekranlar (768px dan kichik) */
+@media (max-width: 768px) {
+    .todo-section {
+        padding: 15px; /* Paddingni kamaytiramiz */
+    }
+    
+    /* Input Form - vertikal joylashish */
+    .todo-input-container { 
+        flex-direction: column; 
+        gap: 10px;
+    }
+    
+    /* Input, Select va Tugma to'liq kenglikni egallaydi */
+    .todo-input-container input[type="text"],
+    .todo-input-container select,
+    .todo-input-container .add-btn { 
+        width: 100%; 
+        flex: unset; /* Flex xususiyatini bekor qilish */
+    }
+
+    /* Vazifa elementi ichidagi o'zgarishlar */
+    .todo-item {
+        flex-wrap: wrap; /* Elementlar kichik ekranda pastga tushishi mumkin */
+        padding: 12px;
+    }
+
+    .todo-text {
+        order: 1; /* Matnni birinchi qatorga olib chiqish */
+        flex-basis: 100%; /* Matn to'liq kenglikni egallasin */
+    }
+
+    .todo-checkbox {
+        order: 2;
+    }
+
+    .todo-priority {
+        order: 3;
+        margin-left: auto; /* O'rta va past ustuvorlik belgilarini o'ng tomonga surish */
+    }
+    
+    .delete-btn {
+        order: 4;
+        margin-left: 15px; /* O'chirish tugmasini biroz ajratish */
+    }
+}
+
+/* Kichik ekranlar (480px dan kichik) */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 20px;
+    }
+    .todo-item {
+        gap: 10px;
+        padding: 10px;
+    }
+    .todo-checkbox, .delete-btn {
+        font-size: 14px;
+    }
+}
+/* O'rta ekranlar (768px dan kichik) ichida */
+@media (max-width: 768px) {
+    /* ... boshqa qoidalar ... */
+    
+    .todo-priority {
+        order: 3;
+        margin-left: auto; /* !!! Mana bu xususiyat ustuvorlikni o'ng tomonga suradi !!! */
+    }
+    
+    .delete-btn {
+        order: 4;
+        margin-left: 15px; 
+    }
+}

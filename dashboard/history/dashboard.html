@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyDashboard - Task Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./dashboard.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-tasks"></i>
+                <span>MyDashboard</span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item active">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-list-check"></i>
+                        <span>MyTodo</span>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Statistika</span>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>Kalendar</span>
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-cog"></i>
+                        <span>Sozlamalar</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="stats-container">
+                <div class="stat-card fade-in">
+                    <div class="stat-card-header">
+                        <span class="stat-card-title">Barcha vazifalar</span>
+                        <i class="fas fa-tasks stat-card-icon"></i>
+                    </div>
+                    <div class="stat-card-value" id="totalTasks">12</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-card-header">
+                        <span class="stat-card-title">Bajarilgan</span>
+                        <i class="fas fa-check-circle stat-card-icon"></i>
+                    </div>
+                    <div class="stat-card-value" id="completedTasks">7</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-card-header">
+                        <span class="stat-card-title">Jarayonda</span>
+                        <i class="fas fa-spinner stat-card-icon"></i>
+                    </div>
+                    <div class="stat-card-value" id="inProgressTasks">5</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-card-header">
+                        <span class="stat-card-title">Umumiy vaqt</span>
+                        <i class="fas fa-clock stat-card-icon"></i>
+                    </div>
+                    <div class="stat-card-value" id="totalTime">24h</div>
+                </div>
+            </div>
+
+            <section class="todo-section fade-in">
+                <div class="section-header">
+                    <h2 class="section-title">My Todo</h2>
+                </div>
+                <div class="todo-input-container">
+                    <input type="text" class="todo-input" id="todoInput" placeholder="Yangi vazifa qo'shing...">
+                    <button class="add-btn" id="addTodoBtn">+ Qo'shish</button>
+                </div>
+                <div class="todo-list" id="todoList">
+                    <div class="todo-item">
+                        <div class="todo-checkbox"></div>
+                        <div class="todo-text">Dashboard dizaynini yakunlash</div>
+                        <span class="todo-priority priority-high">Yuqori</span>
+                    </div>
+                    <div class="todo-item">
+                        <div class="todo-checkbox"></div>
+                        <div class="todo-text">API integratsiyasi</div>
+                        <span class="todo-priority priority-medium">O'rta</span>
+                    </div>
+                    <div class="todo-item completed">
+                        <div class="todo-checkbox checked"></div>
+                        <div class="todo-text">Foydalanuvchi interfeysi dizayni</div>
+                        <span class="todo-priority priority-low">Past</span>
+                    </div>
+                    <div class="todo-item">
+                        <div class="todo-checkbox"></div>
+                        <div class="todo-text">Ma'lumotlar bazasini optimallashtirish</div>
+                        <span class="todo-priority priority-high">Yuqori</span>
+                    </div>
+                    <div class="todo-item">
+                        <div class="todo-checkbox"></div>
+                        <div class="todo-text">Test qilish va debugging</div>
+                        <span class="todo-priority priority-medium">O'rta</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="right-sidebar">
+            <section class="pomodoro-section fade-in">
+                <h3 class="section-title">Pomodoro Timer</h3>
+                <div class="timer-display" id="timerDisplay">25:00</div>
+                <div class="timer-controls">
+                    <button class="timer-btn start" id="startTimer">Boshlash</button>
+                    <button class="timer-btn pause" id="pauseTimer">Pauza</button>
+                    <button class="timer-btn reset" id="resetTimer">Qayta</button>
+                </div>
+            </section>
+
+            <section class="time-tracker-section fade-in">
+                <h3 class="section-title">HomeTime Tracker</h3>
+                <div class="time-categories">
+                    <div class="time-category">
+                        <div class="category-name">
+                            <div class="category-icon">📚</div>
+                            <span>O'qish</span>
+                        </div>
+                        <div class="category-time">03:30:45</div>
+                    </div>
+                    <div class="time-category">
+                        <div class="category-name">
+                            <div class="category-icon">💻</div>
+                            <span>Ish</span>
+                        </div>
+                        <div class="category-time">05:45:20</div>
+                    </div>
+                    <div class="time-category">
+                        <div class="category-name">
+                            <div class="category-icon">🏃</div>
+                            <span>Sport</span>
+                        </div>
+                        <div class="category-time">01:15:30</div>
+                    </div>
+                    <div class="time-category">
+                        <div class="category-name">
+                            <div class="category-icon">🎨</div>
+                            <span>Ijodiylik</span>
+                        </div>
+                        <div class="category-time">02:20:15</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="important-tasks-section fade-in">
+                <h3 class="section-title">Muhim Vazifalar</h3>
+                <div class="important-tasks-list">
+                    <div class="important-task-item">
+                        <i class="fas fa-check-circle task-status"></i>
+                        <span>Hisobot tayyorlash</span>
+                    </div>
+                    <div class="important-task-item">
+                        <i class="fas fa-check-circle task-status"></i>
+                        <span>Mijoz bilan uchrashuv</span>
+                    </div>
+                    <div class="important-task-item">
+                        <i class="fas fa-check-circle task-status"></i>
+                        <span>Reja tuzish</span>
+                    </div>
+                </div>
+            </section>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

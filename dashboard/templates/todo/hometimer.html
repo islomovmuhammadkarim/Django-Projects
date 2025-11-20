@@ -1,0 +1,67 @@
+{% extends 'todo/base.html' %}
+{% load static %}
+
+{% block title %}Home Timer{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/hometimer.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+{# Ilova: Font Awesome ikonkalari uchun #}
+
+<section class="hometimer-section fade-in">
+    <div class="section-header">
+        <h2 class="section-title">HomeTime Tracker</h2>
+        
+        {# YANGI SOHA QO'SHISH FORMASI #}
+        <form method="post" class="add-category-form">
+            {% csrf_token %}
+            <input type="text" name="category_name" placeholder="Yangi soha qo'shish..." required>
+            <button type="submit">Qo'shish</button>
+        </form>
+    </div>
+
+    <div class="time-categories">
+        {% for cat in categories %}
+        <div class="time-category">
+            
+            <div class="category-info">
+                <div class="category-name"><h3>{{ cat.name }}</h3></div>
+                
+                {# View funksiyasidan kelayotgan hisoblangan soat va minutlar #}
+                <div class="category-time">
+                    <span class="time-unit">{{ cat.hours }}</span> soat 
+                    <span class="time-unit">{{ cat.minutes }}</span> minut
+                </div>
+            </div>
+
+            <div class="time-control-group">
+                
+                {# 1. VAQT QO'SHISH FORMASI #}
+                <form method="post" class="time-adjust-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="category_id" value="{{ cat.id }}">
+                    <input type="number" name="minutes" placeholder="Minut" min="1" required>
+                    <button type="submit" name="add_time" class="adjust-btn add-btn"><i class="fas fa-plus"></i></button>
+                    <button type="submit" name="subtract_time" class="adjust-btn subtract-btn"><i class="fas fa-minus"></i></button>
+                    
+                </form>
+
+            
+                {# 2. KATEGORIYANI O'CHIRISH FORMASI #}
+                <form method="post" class="delete-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="category_id" value="{{ cat.id }}">
+                    <button type="submit" name="delete_category" class="delete-cat-btn">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+                
+            </div>
+            
+        </div>
+        {% empty %}
+        <p class="empty-message">Hozircha hech qanday soha mavjud emas. Yangi soha qo'shing!</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -36,18 +36,18 @@ class ContactMessage(models.Model):
 
 
 
-class Todo(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    completed = models.BooleanField(default=False)
-    deadline = models.DateField(null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+# class Todo(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     title = models.CharField(max_length=200)
+#     completed = models.BooleanField(default=False)
+#     deadline = models.DateField(null=True, blank=True)
+#     created_at = models.DateTimeField(auto_now_add=True)
 
-    def days_left(self):
-        if self.deadline:
-            delta = (self.deadline - timezone.localdate()).days
-            return delta
-        return None
+#     def days_left(self):
+#         if self.deadline:
+#             delta = (self.deadline - timezone.localdate()).days
+#             return delta
+#         return None
 
-    def __str__(self):
-        return f"{self.title} ({self.user.username})"
+#     def __str__(self):
+#         return f"{self.title} ({self.user.username})"

@@ -1,5 +1,5 @@
 from django import forms
-from .models import ContactMessage,Todo
+from .models import ContactMessage
 
 
 class ContactMessageForm(forms.ModelForm):
@@ -13,11 +13,11 @@ class ContactMessageForm(forms.ModelForm):
         }
         
 
-class TodoForm(forms.ModelForm):
-    class Meta:
-        model = Todo
-        fields = ['title', 'deadline']
-        widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'Vazifa nomi'}),
-            'deadline': forms.DateInput(attrs={'type': 'date'}),
-        }
+# class TodoForm(forms.ModelForm):
+#     class Meta:
+#         model = Todo
+#         fields = ['title', 'deadline']
+#         widgets = {
+#             'title': forms.TextInput(attrs={'placeholder': 'Vazifa nomi'}),
+#             'deadline': forms.DateInput(attrs={'type': 'date'}),
+#         }

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MyDashboard{% endblock %}</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mytodo.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}"> 
+</head>
+<body>
+    <div class="app-container">
+
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-tasks"></i>
+                <span>MyDashboard</span>
+            </div>
+            
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item {% if request.path == '/' or request.path == '/dashboard/' %}active{% endif %}">
+                        <a href="{% url 'dashboard' %}" style="display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none;">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {% if 'mytodo' in request.path %}active{% endif %}">
+                        <a href="{% url 'mytodo' %}" style="display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none;">
+                            <i class="fas fa-list-check"></i>
+                            <span>MyTodo</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {% if 'stats' in request.path %}active{% endif %}">
+                        <a href="{% url 'stats' %}" style="display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none;">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Statistika</span>
+                        </a>
+                    </li>
+                     <li class="nav-item {% if 'hometimer' in request.path %}active{% endif %}">
+                        <a href="{% url 'hometimer' %}" style="display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none;">
+                            <i class="fas fa-calendar"></i>
+                            <span>HomeTimer</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {% if 'settings' in request.path %}active{% endif %}">
+                        <a href="" style="display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none;">
+                            <i class="fas fa-cog"></i>
+                            <span>Sozlamalar</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <aside class="right-sidebar">
+            {% block right_sidebar %}
+            
+            <section class="clock-section">
+              
+            </section>
+
+
+
+            {% endblock %}
+        </aside>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'js/mytodo.js' %}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {% comment %} <section class="time-tracker-section fade-in">
+                    <h3 class="section-title">HomeTime Tracker</h3>
+                    <div class="time-categories">
+                        {% for category in categories %}
+                        <div class="time-category">
+                            <div class="category-name">{{ category.name }}</div>
+                            <div class="category-time">
+                                {% with category.hours|default:"00" as hours %}
+                                {% with category.minutes|default:"00" as minutes %}
+                                {{ hours|stringformat:"02d" }}:{{ minutes|stringformat:"02d" }}
+                                {% endwith %}
+                                {% endwith %}
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p style="text-align:center; color:var(--text-secondary);">Hozircha hech qanday soha mavjud emas</p>
+                        {% endfor %}
+                    </div>
+                </section> {% endcomment %}
+{% comment %} 
+                <section class="important-tasks-section fade-in">
+                    <h3 class="section-title">Muhim Vazifalar</h3>
+                    <div class="important-tasks-list">
+                        {% for task in important_tasks %}
+                        <div class="important-task-item">
+                            <i class="fas fa-check-circle task-status {% if task.completed %}completed{% endif %}"></i>
+                            <span>{{ task.title }}</span>
+                        </div>
+                        {% empty %}
+                        <p style="text-align:center; color:var(--text-secondary);">Hozircha muhim vazifa yo'q</p>
+                        {% endfor %}
+                    </div>
+                </section> {% endcomment %}

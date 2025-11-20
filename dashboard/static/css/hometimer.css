@@ -1,0 +1,261 @@
+/* ==================================================================== */
+/* 0. ROOT VA GLOBAL O'ZGARUVCHILAR */
+/* ==================================================================== */
+:root {
+    --primary-color: #333333;
+    --bavy: #4b7bec;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9f9f9;
+    --border-color: #dddddd;
+    --text-primary: #222222;
+    --success-green: #2ecc71;
+    --danger-red: #e74c3c;
+    --hover-bg: #f0f0f0;
+    --white: #ffffff;
+}
+
+/* Global Reset (Agar mavjud bo'lmasa, qo'shish tavsiya etiladi) */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==================================================================== */
+/* 1. ASOSIY BO'LIM VA SAHA QO'SHISH */
+/* ==================================================================== */
+
+.hometimer-section {
+    background-color: var(--bg-primary);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    flex: 1;
+    border: 1px solid var(--border-color);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.add-category-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.add-category-form input[type="text"] {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    flex: 1;
+    font-size: 16px;
+}
+
+.add-category-form button {
+    padding: 10px 20px;
+    background-color: var(--bavy);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.add-category-form button:hover {
+    background-color: #3867d6;
+}
+
+/* ==================================================================== */
+/* 2. KATEGORIYALAR RO'YXATI */
+/* ==================================================================== */
+
+.time-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.time-category {
+    background-color: var(--bg-secondary);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.time-category:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.empty-message {
+    padding: 20px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.category-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-right: 15px;
+}
+
+.category-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.category-time {
+    font-size: 16px;
+    color: var(--bavy);
+    font-weight: 500;
+}
+
+/* ==================================================================== */
+/* 3. VAQTNI BOSHQARISH GURUHI (Yangi o'lchamlar) */
+/* ==================================================================== */
+
+.time-control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* Vaqtni sozlash formasi (Qo'shish/Ayirish) */
+.time-adjust-form {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+/* Input maydonini kattalashtirish */
+.time-adjust-form input[type="number"] {
+    width: 80px; /* Kenglik 80px */
+    padding: 10px; /* Padding 10px */
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    text-align: center;
+    font-size: 16px; 
+}
+
+/* Tugmalarni kattalashtirish */
+.adjust-btn {
+    width: 40px; /* Kenglik 40px */
+    height: 40px; /* Balandlik 40px */
+    border: none;
+    border-radius: 6px;
+    color: var(--white);
+    font-size: 16px; /* Ikonka o'lchami */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-btn {
+    background-color: var(--success-green);
+}
+
+.add-btn:hover {
+    background-color: #27ae60;
+}
+
+.subtract-btn {
+    background-color: var(--danger-red);
+}
+
+.subtract-btn:hover {
+    background-color: #c0392b;
+}
+
+/* O'chirish tugmasi */
+.delete-form {
+    margin-left: 10px;
+}
+
+/* O'chirish tugmasini kattalashtirish */
+.delete-cat-btn {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 1px solid var(--danger-red);
+    color: var(--danger-red);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.delete-cat-btn:hover {
+    background-color: var(--danger-red);
+    color: var(--white);
+}
+
+/* ==================================================================== */
+/* 4. RESPONSIVE DIZAYN */
+/* ==================================================================== */
+
+@media (max-width: 992px) {
+    .time-category {
+        flex-wrap: wrap;
+    }
+    .category-info {
+        flex-basis: 100%; 
+        margin-bottom: 10px;
+    }
+    .time-control-group {
+        width: 100%;
+        justify-content: space-between;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .add-category-form {
+        width: 100%;
+        margin-top: 15px;
+    }
+    .add-category-form input[type="text"] {
+        flex: 1;
+    }
+    .time-control-group {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    /* Mobil ekranda input va tugmalar hajmini saqlash */
+    .time-adjust-form input[type="number"] {
+        width: 70px; 
+        padding: 8px;
+    }
+    .adjust-btn, .delete-cat-btn {
+        width: 40px;
+        height: 40px;
+    }
+    .delete-form {
+        margin-left: 0;
+    }
+}

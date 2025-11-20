@@ -1,0 +1,59 @@
+{% extends 'todo/base.html' %}
+{% load static %}
+
+{% block title %}My Todo{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/mytodo.css' %}">
+
+<section class="todo-section fade-in">
+    <div class="section-header">
+        <h2 class="section-title">My Todo</h2>
+    </div>
+
+    <!-- Todo Input Form -->
+    <form method="post" action="{% url 'add_todo' %}" class="todo-input-container">
+        {% csrf_token %}
+        <input type="text" name="title" class="todo-input" placeholder="Yangi vazifa qo'shing..." required>
+        <select name="priority" class="todo-input" required>
+            <option value="high">Yuqori</option>
+            <option value="medium">O'rta</option>
+            <option value="low">Past</option>
+        </select>
+        <button type="submit" class="add-btn">+ Qo'shish</button>
+    </form>
+
+    <!-- Todo List -->
+    <div class="todo-list" id="todoList">
+        {% for todo in todos %}
+        <div class="todo-item {% if todo.completed %}completed{% endif %}">
+            <a href="{% url 'toggle_todo' todo.id %}">
+                <div class="todo-checkbox {% if todo.completed %}checked{% endif %}"></div>
+            </a>
+            <div class="todo-text">{{ todo.title }}</div>
+            <span class="todo-priority {% if todo.priority == 'high' %}priority-high{% elif todo.priority == 'medium' %}priority-medium{% else %}priority-low{% endif %}">
+                {% if todo.priority == 'high' %}Yuqori{% elif todo.priority == 'medium' %}O'rta{% else %}Past{% endif %}
+            </span>
+
+            <a href="{% url 'delete_todo' todo.id %}" class="delete-btn">
+            <i class="fas fa-trash-alt"></i>
+            </a>
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<script src="{% static 'js/mytodo.js' %}"></script>
+{% endblock %}

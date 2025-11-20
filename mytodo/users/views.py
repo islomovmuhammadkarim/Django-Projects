@@ -110,3 +110,9 @@ def resend_activation_view(request):
         except User.DoesNotExist:
             return render(request, 'users/activate_failed.html', {'error': 'Bunday email topilmadi!'})
     return render(request, 'users/resend_activation.html')
+
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')     # logoutdan keyin qayerga qaytishi

@@ -1,0 +1,48 @@
+{% extends 'todo/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard Stats{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/stats.css' %}">
+<section class="dashboard-stats fade-in">
+
+    <h2 class="section-title">Dashboard Stats</h2>
+
+    <div class="stats-container">
+        <div class="stat-card fade-in">
+            <div class="stat-card-header">
+                <span class="stat-card-title">Barcha vazifalar</span>
+                <i class="fas fa-tasks stat-card-icon"></i>
+            </div>
+            <div class="stat-card-value">10 {{ total_tasks }}</div>
+        </div>
+
+        <div class="stat-card fade-in">
+            <div class="stat-card-header">
+                <span class="stat-card-title">Bajarilgan</span>
+                <i class="fas fa-check-circle stat-card-icon"></i>
+            </div>
+            <div class="stat-card-value">10 {{ completed_tasks }}</div>
+        </div>
+
+        <div class="stat-card fade-in">
+            <div class="stat-card-header">
+                <span class="stat-card-title">Jarayonda</span>
+                <i class="fas fa-spinner stat-card-icon"></i>
+            </div>
+            <div class="stat-card-value">10 {{ in_progress_tasks }}</div>
+        </div>
+
+        <div class="stat-card fade-in">
+            <div class="stat-card-header">
+                <span class="stat-card-title">Umumiy vaqt</span>
+                <i class="fas fa-clock stat-card-icon"></i>
+            </div>
+            <div class="stat-card-value">10 {{ total_time }}</div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

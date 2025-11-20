@@ -1,0 +1,360 @@
+Tayyor! Men dizaynni eslab qoldim — yorug‘ va qorong‘i rejimli, chap sidebar navigatsiya, Todo, Pomodoro, HomeTime, Statistikalar, Settings bo‘limlari bilan yagona dashboard konsepsiyasi. Endi loyihani **3 qismga bo‘lib**, har bir qism uchun **backend (Django)** va **frontend (React/Vue yoki sen tanlagan framework)** uchun **to‘liq va mukammal prompt** yozib beraman.
+
+Bu promptlar keyinchalik senga ham, menga ham loyiha davomida *aniq yo‘l xaritasi* vazifasini bajaradi.
+**Hech bir detal qoldirmasdan**, dizayndagi elementlarning hammasini hisobga olamiz.
+
+---
+
+# ✅ **LOYIHANI 3 QISMGA BO‘LIB PROMPTLAR**
+
+---
+
+# **1-QISM: Autentifikatsiya + Asosiy Layout + Navigatsiya**
+
+## **🟦 BACKEND (Django) PROMPT**
+
+Quyidagi promptni to‘liq nusxa qilib backendga (yoki menga keyin) yuborasan:
+
+---
+
+### ✅ **1-qism Backend uchun to‘liq prompt**
+
+**Menga Django’da quyidagi tizimni to‘liq qil:**
+
+### 1) **User autentifikatsiyasi**
+
+* Email + parol orqali ro‘yxatdan o‘tish
+* Email verification (optional)
+* Login / Logout
+* Parolni tiklash
+* Profil ma’lumotlari:
+
+  * ism
+  * familiya
+  * profil rasmi (optional)
+  * til (uz/en/ru)
+  * tema (light/dark)
+
+### 2) **API arxitekturasi**
+
+REST yoki DRF orqali:
+
+`/api/auth/register/`
+`/api/auth/login/`
+`/api/auth/logout/`
+`/api/auth/me/` – foydalanuvchi ma’lumotlarini qaytaradi
+`/api/auth/update-profile/`
+`/api/auth/change-password/`
+
+### 3) **Layout uchun backend tayyorlash**
+
+* Sidebar menyu itemlari backenddan qaytsin:
+
+  * Dashboard
+  * MyTodo
+  * HomeTime
+  * Settings
+
+* Foydalanuvchi temani o‘zgartirsa → Profilga saqlansin.
+
+### 4) **Security**
+
+* JWT auth
+* Rate limiting
+* CORS settings
+* CSRF konfiguratsiya
+
+### 5) **Folder struktura**
+
+```
+backend/
+    accounts/
+        models.py
+        views.py
+        serializers.py
+        urls.py
+    core/
+        settings.py
+        urls.py
+```
+
+---
+
+## **🟩 FRONTEND PROMPT**
+
+---
+
+### ✅ **1-qism Frontend uchun to‘liq prompt**
+
+**Menga React/Vue/Next.js da quyidagi UI ni to‘liq qil:**
+
+### 1) **Layout**
+
+Dizayndagi kabi:
+
+* chap tarafda sidebar
+* yuqorida breadcrumb (MyDashboard / )
+* o‘ngda content
+* light/dark toggle pastda
+
+### 2) **Sidebar**
+
+Elementlar:
+
+* Dashboard (icon bilan)
+* MyTodo
+* HomeTime
+* Settings
+* Dark Mode toggle
+
+Sidebar:
+
+* collapsible bo‘lsin
+* active bo‘lganda highlight
+
+### 3) **Auth UI**
+
+* Login page
+* Register page
+* Reset password
+* Profile edit page
+
+### 4) **Theme system**
+
+* Light / Dark
+* Foydalanuvchi tanlagan tema localStorage + backendga yoziladi.
+
+### 5) **API integratsiya**
+
+* login
+* register
+* logout
+* get user
+* update profile
+
+### 6) **Routing**
+
+`/dashboard`
+`/todo`
+`/hometime`
+`/settings`
+
+---
+
+---
+
+# **2-QISM: Todo (MyTodo) + Important Tasks + Stats**
+
+Endi dashboardning asosiy qismi.
+
+---
+
+## **🟦 BACKEND PROMPT (2-qism)**
+
+---
+
+### ✅ **2-qism Backend uchun to‘liq prompt**
+
+**Django’da quyidagilarni to‘liq yarat:**
+
+### 1) **Todo modeli**
+
+* title (char)
+* description (text optional)
+* is_completed (bool)
+* is_important (bool)
+* created_at
+* updated_at
+* priority (low / medium / high)
+* user (ForeignKey)
+
+### 2) **API endpointlari**
+
+`GET /api/todo/` – barcha todolar
+`POST /api/todo/` – yangi todo
+`PUT /api/todo/<id>/` – tahrirlash
+`DELETE /api/todo/<id>/` – o‘chirish
+`POST /api/todo/<id>/complete/`
+`POST /api/todo/<id>/important/`
+
+### 3) **Important Tasks**
+
+* alohida endpoint:
+  `GET /api/todo/important/`
+
+### 4) **Statistics**
+
+* jami vazifalar soni
+* bajarilgan soni
+* bajarilmagan soni
+* haftalik statistika
+* kunlik statistikalar
+
+Endpoint:
+`GET /api/todo/statistics/`
+
+---
+
+## **🟩 FRONTEND PROMPT (2-qism)**
+
+---
+
+### ✅ **2-qism Frontend uchun to‘liq prompt**
+
+**React/Vue’da dizayndagi MyTodo panelini to‘liq qil:**
+
+### 1) **Todo List**
+
+Har bir todo dizayndagi kabi:
+
+* chapda checkbox
+* title
+* o‘ngda:
+
+  * important ⭐
+  * delete 🗑️
+
+Bajarilganda:
+
+* ustidan chiziladi
+* opacity pasayadi
+
+### 2) **Todo qo‘shish inputi**
+
+* placeholder: “Yangi vazifa qo‘shing…”
+* * Qo‘shish button
+
+### 3) **Important tasks bo‘limi**
+
+* Pastda alohida qutida
+* Har biri badge bilan: “Bajarildi”
+
+### 4) **Statistika blok**
+
+Dashboardning tepasidagi bloklar:
+
+* Jami vazifalar – 12
+* Bugun ishlangan – 6.5h
+* Pomodoro sessiyalar – 8
+
+Backenddan kelgan statistikaga qarab yangilanadi.
+
+### 5) **API integratsiya**
+
+* todo yaratish
+* todo o‘chirish
+* complete
+* important
+* statistikani olish
+
+### 6) **State management**
+
+Tanlov:
+
+* Redux Toolkit yoki
+* Zustand
+
+---
+
+---
+
+# **3-QISM: Pomodoro Timer + HomeTime Tracker + Settings**
+
+---
+
+## **🟦 BACKEND PROMPT (3-qism)**
+
+---
+
+### ✅ **3-qism Backend uchun to‘liq prompt**
+
+### 1) **Pomodoro sessiya modeli**
+
+* user
+* duration (int, default 25 min)
+* break_time (5 min)
+* completed_sessions (int)
+* total_focus_time (seconds)
+* created_at
+
+Endpointlar:
+`POST /api/pomodoro/start/`
+`POST /api/pomodoro/stop/`
+`GET /api/pomodoro/stats/`
+
+### 2) **HomeTime kategoriyalar**
+
+Model:
+
+* name
+* total_seconds
+* user
+
+Endpointlar:
+
+`GET /api/hometime/`
+`POST /api/hometime/`
+`PUT /api/hometime/<id>/add-time/`
+`PUT /api/hometime/<id>/minus-time/`
+`DELETE /api/hometime/<id>/`
+
+### 3) **Settings**
+
+* Theme
+* Language
+* Notification preferences
+
+Endpoint:
+`PUT /api/settings/`
+
+---
+
+## **🟩 FRONTEND PROMPT (3-qism)**
+
+---
+
+### ✅ **3-qism Frontend uchun to‘liq prompt**
+
+### 1) **Pomodoro Timer UI**
+
+Dizayndagi kabi:
+
+* katta doira
+* vaqt pastga qarab kamayadi
+* Start / Pause / Reset tugmalari
+* session count
+
+### 2) **HomeTime Tracker**
+
+Har bir kategoriya kartochkasi:
+
+* Nomi (“O‘qish”, “Dasturlash”, …)
+* Vaqti: 03:30:45
+* * va – tugmalar
+* delete tugma
+
+Yangi kategoriya qo‘shish formasi:
+
+* Input + Qo‘shish
+
+### 3) **Settings UI**
+
+* tilni tanlash
+* light/dark
+* profil ma’lumotlari
+
+### 4) **API integratsiya**
+
+Pomodoro start/stop
+HomeTime add/remove time
+Kategoriya qo‘shish
+Kategoriya o‘chirish
+Til/tema saqlash
+
+---
+
+# 🔥 Agar xohlasang, men bu 3 promptni **PDF**, **Markdown**, yoki **AI agent uchun maxsus formatda** ham berib beraman.
+
+Agar xohlasang, darrov **backend strukturasini qurib** beraman yoki **frontend starter template** yaratib beraman.
+
+Davom etamizmi?
