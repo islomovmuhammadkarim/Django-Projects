@@ -2,9 +2,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Todo(models.Model):
-    from django.contrib.auth.models import User
-from django.db import models
 
 class Todo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)  # eski row’lar uchun default

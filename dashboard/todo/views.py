@@ -39,28 +39,41 @@ def dashboard_view(request):
     return render(request, 'todo/dashboard.html', context)
 
 
+from django.shortcuts import redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import Todo
+
+@login_required
 def add_todo(request):
     if request.method == 'POST':
         title = request.POST.get('title')
-        priority = request.POST.get('priority')
+        priority = request.POST.get('priority', 'medium')  # default priority
 
-        if title and priority:
-            Todo.objects.create(title=title, priority=priority)
+        if title:
+            # Foydalanuvchini bog‘laymiz
+            Todo.objects.create(user=request.user, title=title, priority=priority)
+
     return redirect('dashboard')
 
+
+@login_required
 def toggle_todo(request, todo_id):
-    todo = Todo.objects.get(id=todo_id)
+    # Faqat shu foydalanuvchining todo’sini olish
+    todo = get_object_or_404(Todo, id=todo_id, user=request.user)
     todo.completed = not todo.completed
     todo.save()
     return redirect('dashboard')
 
 
+@login_required
 def delete_todo(request, todo_id):
-    todo = Todo.objects.get(id=todo_id)
+    # Faqat shu foydalanuvchining todo’sini o‘chirish
+    todo = get_object_or_404(Todo, id=todo_id, user=request.user)
     todo.delete()
     return redirect('dashboard')
 
 
+@login_required
 def hometimer_view(request):
     user = request.user
 
@@ -103,29 +116,19 @@ def hometimer_view(request):
     return render(request, 'todo/hometimer.html', {'categories': categories})
 
 
-from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
-from .models import TimeCategory
-
-from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
-from .models import TimeCategory
-
-# views.py
-# @login_required   # test vaqtida komment qiling
+@login_required
 def get_time_categories(request):
-    user = request.user
-    categories = TimeCategory.objects.filter(user=user)
+    categories = TimeCategory.objects.filter(user=request.user)
 
-    data = [
-        {
+    data = []
+    for cat in categories:
+        total = cat.total_minutes
+        data.append({
+            "id": cat.id,
             "name": cat.name,
-            "hours": cat.total_minutes // 60,
-            "minutes": cat.total_minutes % 60,
-            "icon": "📌"
-        }
-        for cat in categories
-    ]
+            "total_minutes": total,
+        })
+
     return JsonResponse({"categories": data})
 
 

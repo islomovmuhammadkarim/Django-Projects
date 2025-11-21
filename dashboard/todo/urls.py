@@ -8,7 +8,7 @@ urlpatterns = [
     path('toggle/<int:todo_id>/', views.toggle_todo, name='toggle_todo'),
     path('delete/<int:todo_id>/', views.delete_todo, name='delete_todo'),
     path('hometimer/', views.hometimer_view, name='hometimer'),
-    path('api/time-categories/', views.get_time_categories, name='time-categories'),
+    path("api/time-categories/", views.get_time_categories, name="time_categories"),
     path('api/important-tasks/', views.important_tasks_api, name='api_important_tasks'),
     
     ]

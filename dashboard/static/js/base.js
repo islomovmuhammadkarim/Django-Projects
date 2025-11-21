@@ -1,114 +1,137 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Todo functionality
+
+    /* ================================
+       TODO ELEMENTLARINI TEKSHIRISH
+    ================================== */
     const todoInput = document.getElementById('todoInput');
     const addTodoBtn = document.getElementById('addTodoBtn');
     const todoList = document.getElementById('todoList');
 
-    function updateStats() {
-        const totalTasksEl = document.getElementById('totalTasks');
-        const completedTasksEl = document.getElementById('completedTasks');
-        const inProgressTasksEl = document.getElementById('inProgressTasks');
+    if (todoInput && addTodoBtn && todoList) {
 
-        const allTodos = document.querySelectorAll('.todo-item');
-        const completedTodos = document.querySelectorAll('.todo-item.completed');
+        function updateStats() {
+            const totalTasksEl = document.getElementById('totalTasks');
+            const completedTasksEl = document.getElementById('completedTasks');
+            const inProgressTasksEl = document.getElementById('inProgressTasks');
 
-        totalTasksEl.textContent = allTodos.length;
-        completedTasksEl.textContent = completedTodos.length;
-        inProgressTasksEl.textContent = allTodos.length - completedTodos.length;
-    }
+            if (!totalTasksEl || !completedTasksEl || !inProgressTasksEl) return;
 
-    function addTodo() {
-        const todoText = todoInput.value.trim();
-        if (!todoText) return;
+            const allTodos = document.querySelectorAll('.todo-item');
+            const completedTodos = document.querySelectorAll('.todo-item.completed');
 
-        const todoItem = document.createElement('div');
-        todoItem.className = 'todo-item fade-in';
+            totalTasksEl.textContent = allTodos.length;
+            completedTasksEl.textContent = completedTodos.length;
+            inProgressTasksEl.textContent = allTodos.length - completedTodos.length;
+        }
 
-        const priorities = ['priority-high', 'priority-medium', 'priority-low'];
-        const priorityTexts = ['Yuqori', "O'rta", 'Past'];
-        const randomIndex = Math.floor(Math.random() * 3);
+        function addTodo() {
+            const todoText = todoInput.value.trim();
+            if (!todoText) return;
 
-        todoItem.innerHTML = `
-            <div class="todo-checkbox"></div>
-            <div class="todo-text">${todoText}</div>
-            <span class="todo-priority ${priorities[randomIndex]}">${priorityTexts[randomIndex]}</span>
-        `;
+            const todoItem = document.createElement('div');
+            todoItem.className = 'todo-item fade-in';
 
-        todoList.appendChild(todoItem);
-        todoInput.value = '';
-        updateStats();
-    }
+            const priorities = ['priority-high', 'priority-medium', 'priority-low'];
+            const priorityTexts = ['Yuqori', "O'rta", 'Past'];
+            const randomIndex = Math.floor(Math.random() * 3);
 
-    addTodoBtn.addEventListener('click', addTodo);
-    todoInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') addTodo();
-    });
+            todoItem.innerHTML = `
+                <div class="todo-checkbox"></div>
+                <div class="todo-text">${todoText}</div>
+                <span class="todo-priority ${priorities[randomIndex]}">${priorityTexts[randomIndex]}</span>
+            `;
 
-    document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('todo-checkbox')) {
-            const checkbox = e.target;
-            const todoItem = checkbox.parentElement;
-            checkbox.classList.toggle('checked');
-            todoItem.classList.toggle('completed');
+            todoList.appendChild(todoItem);
+            todoInput.value = '';
             updateStats();
         }
-    });
 
-    // Pomodoro Timer
+        addTodoBtn.addEventListener('click', addTodo);
+
+        todoInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') addTodo();
+        });
+
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('todo-checkbox')) {
+                const checkbox = e.target;
+                const todoItem = checkbox.parentElement;
+                checkbox.classList.toggle('checked');
+                todoItem.classList.toggle('completed');
+                updateStats();
+            }
+        });
+    }
+
+    /* ================================
+       POMODORO TIMER ELEMENTLARINI TEKSHIRISH
+    ================================== */
     const startTimerBtn = document.getElementById('startTimer');
     const pauseTimerBtn = document.getElementById('pauseTimer');
     const resetTimerBtn = document.getElementById('resetTimer');
     const timerDisplay = document.getElementById('timerDisplay');
-    let timerInterval, minutes = 25, seconds = 0, isTimerRunning = false;
 
-    function updateTimerDisplay() {
-        const m = minutes < 10 ? '0'+minutes : minutes;
-        const s = seconds < 10 ? '0'+seconds : seconds;
-        timerDisplay.textContent = `${m}:${s}`;
-    }
+    if (startTimerBtn && pauseTimerBtn && resetTimerBtn && timerDisplay) {
 
-    function updateTimer() {
-        if (seconds === 0) {
-            if (minutes === 0) {
-                pauseTimer();
-                resetTimer();
-                return;
-            }
-            minutes--;
-            seconds = 59;
-        } else { seconds--; }
-        updateTimerDisplay();
-    }
+        let timerInterval, minutes = 25, seconds = 0, isTimerRunning = false;
 
-    function startTimer() {
-        if (!isTimerRunning) {
-            isTimerRunning = true;
-            timerInterval = setInterval(updateTimer, 1000);
+        function updateTimerDisplay() {
+            const m = minutes < 10 ? '0' + minutes : minutes;
+            const s = seconds < 10 ? '0' + seconds : seconds;
+            timerDisplay.textContent = `${m}:${s}`;
         }
+
+        function updateTimer() {
+            if (seconds === 0) {
+                if (minutes === 0) {
+                    pauseTimer();
+                    resetTimer();
+                    return;
+                }
+                minutes--;
+                seconds = 59;
+            } else {
+                seconds--;
+            }
+            updateTimerDisplay();
+        }
+
+        function startTimer() {
+            if (!isTimerRunning) {
+                isTimerRunning = true;
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            minutes = 25;
+            seconds = 0;
+            updateTimerDisplay();
+        }
+
+        startTimerBtn.addEventListener('click', startTimer);
+        pauseTimerBtn.addEventListener('click', pauseTimer);
+        resetTimerBtn.addEventListener('click', resetTimer);
     }
 
-    function pauseTimer() {
-        clearInterval(timerInterval);
-        isTimerRunning = false;
-    }
-
-    function resetTimer() {
-        clearInterval(timerInterval);
-        isTimerRunning = false;
-        minutes = 25; seconds = 0;
-        updateTimerDisplay();
-    }
-
-    startTimerBtn.addEventListener('click', startTimer);
-    pauseTimerBtn.addEventListener('click', pauseTimer);
-    resetTimerBtn.addEventListener('click', resetTimer);
-
-    // Navigation menu active
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.addEventListener('click', function(){
-            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-            this.classList.add('active');
+    /* ================================
+       NAVIGATION ACTIVE
+    ================================== */
+    const navItems = document.querySelectorAll('.nav-item');
+    if (navItems.length) {
+        navItems.forEach(item => {
+            item.addEventListener('click', function () {
+                navItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
         });
-    });
-});
+    }
 
+});
