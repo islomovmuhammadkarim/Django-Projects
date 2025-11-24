@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+    <div class="container my-5">
+        <h2>Signup</h2>
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+    
+        <div class="mb-3">
+            <div class="form-floating mb-3">
+                <input type="username" class="form-control" id="floatingInput" placeholder="{{ form.username.label }}">
+                <label for="floatingInput">{{ form.username.label }}</label>
+                {% for error in form.username.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+         <div class="mb-3">
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingPassword" placeholder="{{ form.email.label }}">
+                <label for="floatingPassword">{{ form.email.label }}</label>
+                {% for error in form.email.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class='mb-3'>
+            <div class="form-floating">
+                <input type="firstname" class="form-control" id="floatingPassword" placeholder="{{ form.first_name.label }}">
+                <label for="floatingPassword">{{ form.first_name.label }}</label>
+                {% for error in form.first_name.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <div class="form-floating">
+                <input type="age" class="form-control" id="floatingPassword" placeholder="{{ form.age.label }}">
+                <label for="floatingPassword">{{ form.age.label }}</label>
+                {% for error in form.age.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class='mb-3'>
+            <div class="form-floating">
+                <input type="lastname" class="form-control" id="floatingPassword" placeholder="{{ form.last_name.label }}">
+                <label for="floatingPassword">{{ form.last_name.label }}</label>
+                {% for error in form.last_name.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class='mb-3'>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="{{ form.password1.label }}">
+                <label for="floatingPassword">{{ form.password1.label }}</label>
+                {% for error in form.password1.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class='mb-3'>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="{{ form.password2.label }}">
+                <label for="floatingPassword">{{ form.password2.label }}</label>
+                {% for error in form.password2.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class='mb-3'>
+            <button type="submit" class="btn btn-primary w-45">Signup</button>
+        </div>
+        </form>
+    </div>
+{% endblock %}
+
+
+
+{% comment %} 
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm p-4">
+                <h2 class="text-center mb-4">Signup</h2>
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    <!-- Username -->
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">Username</label>
+                        <input type="text" class="form-control {% if form.username.errors %}is-invalid{% endif %}" id="id_username" name="username" required>
+                        <div class="form-text">
+                            Kamida 4 ta belgi, faqat harf va raqam.
+                        </div>
+                        {% for error in form.username.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">Email</label>
+                        <input type="email" class="form-control {% if form.email.errors %}is-invalid{% endif %}" id="id_email" name="email" required>
+                        <div class="form-text">
+                            To‘g‘ri email manzil kiriting.
+                        </div>
+                        {% for error in form.email.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label for="id_password1" class="form-label">Password</label>
+                        <input type="password" class="form-control {% if form.password1.errors %}is-invalid{% endif %}" id="id_password1" name="password1" required>
+                        <div class="form-text">
+                            Kamida 8 ta belgi, raqam va katta harf.
+                        </div>
+                        {% for error in form.password1.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Password confirmation -->
+                    <div class="mb-3">
+                        <label for="id_password2" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control {% if form.password2.errors %}is-invalid{% endif %}" id="id_password2" name="password2" required>
+                        <div class="form-text">
+                            Parolni qaytadan kiriting.
+                        </div>
+                        {% for error in form.password2.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Terms & Conditions -->
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input {% if form.terms.errors %}is-invalid{% endif %}" id="id_terms" name="terms">
+                        <label class="form-check-label" for="id_terms">
+                            Men <a href="#">shartlar va qoidalar</a> bilan roziman.
+                        </label>
+                        {% for error in form.terms.errors %}
+                        <div class="invalid-feedback d-block">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="d-grid mt-3">
+                        <button type="submit" class="btn btn-primary">Signup</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endcomment %}

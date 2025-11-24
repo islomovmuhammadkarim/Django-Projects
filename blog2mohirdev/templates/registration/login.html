@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container my-6" style="max-width: 400px;">
+    <div class="card shadow-sm p-5">
+        <h2 class="mb-4 text-center">Login</h2>
+           <form method="post" novalidate>
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+
+            <div class="text-center mt-3">
+                <a href="{% url 'password_reset' %}" class="btn btn-link">Forgot Password?</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
