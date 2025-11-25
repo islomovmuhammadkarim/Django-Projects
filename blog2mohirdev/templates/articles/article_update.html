@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>Maqolani tahrirlash</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- Title -->
+                <div class="mb-3">
+                    <label for="id_title" class="form-label">Sarlavha</label>
+                    {{ form.title|add_class:"form-control" }}
+                </div>
+
+                <!-- Summary -->
+                <div class="mb-3">
+                    <label for="id_summary" class="form-label">Qisqacha mazmun</label>
+                    {{ form.summary|add_class:"form-control" }}
+                </div>
+
+                <!-- Body -->
+                <div class="mb-3">
+                    <label for="id_body" class="form-label">Maqola matni</label>
+                    {{ form.body|add_class:"form-control" }}
+                </div>
+
+                <!-- Photo -->
+                <div class="mb-3">
+                    <label for="id_photo" class="form-label">Rasm</label>
+                    {{ form.photo|add_class:"form-control" }}
+                    {% if article.photo %}
+                        <img src="{{ article.photo.url }}" alt="{{ article.title }}" class="img-thumbnail mt-2" style="max-width: 200px;">
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Saqlash</button>
+                <a href="{% url 'article-detail' article.pk %}" class="btn btn-secondary">Orqaga</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

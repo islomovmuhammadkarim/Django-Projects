@@ -1,33 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock %}
+
 {% block content %}
-    <h1>Home</h1>
-    <p>Welcome to the home page</p>
-
-    {% if user.is_authenticated %}
-        <p>Current user: {{ user.username }}</p>
-        <p>Current user: {{ user.email }}</p>
-        <p>Current user: {{ user.age }}</p>
-        <p>Current user: {{ user.address }}</p>
-        <form method="post" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <button type="submit">Logout</button>
-        </form>
-
-    {% else %}
-        <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Login</button>
-        </form>
-
-        <form method="post" action="{% url 'signup' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Signup</button>
-        </form>
-
-    {% endif %}
-
+<div class="d-flex justify-content-center align-items-center vh-100" style="background: #f8f9fa;">
+    <div class="text-center">
+        <h1 class="display-3 mb-4">Welcome to My Blog</h1>
+        <p class="lead mb-4">Bu yerda siz eng so‘nggi maqolalarni o‘qishingiz mumkin.</p>
+        <a href="{% url 'article-list' %}" class="btn btn-primary btn-lg">View Articles</a>
+    </div>
+</div>
 {% endblock %}
-

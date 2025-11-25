@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Articles</h2>
+    <div class="row">
+        {% for article in articles %}
+            <div class="col-md-6 col-lg-12 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <!-- Rasm to'liq kenglikda -->
+                    {% if article.photo %}
+                        <img src="{{ article.photo.url }}" class="card-img-top w-100" style="height: auto;" alt="{{ article.title }}">
+                    {% else %}
+                        <img src="{% static 'photos/first_CZsPB4v.jpeg' %}" class="card-img-top w-100" style="height: auto;" alt="{{ article.title }}">
+                    {% endif %}
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">
+                          {{ article.title }}
+                        </h5>
+
+                        <p class="card-text">
+                            {{ article.summary|default:article.body|truncatewords:50 }}
+                        </p>
+
+                        <p class="text-muted mt-auto mb-2">
+                            By {{ article.author.username }}<br>
+                            {{ article.date|date:"M d, Y H:i" }}
+                        </p>
+                        <a href="{% url 'article-detail' article.pk %}" class="btn btn-primary btn-lg mt-2" style="width: 150px;">Read More</a>
+
+                        
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center">No articles found.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

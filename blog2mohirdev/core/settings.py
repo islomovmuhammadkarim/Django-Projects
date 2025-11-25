@@ -27,9 +27,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #tashqi
     'widget_tweaks',
+    'ckeditor',
+    'ckeditor_uploader',
     #ichki
     'accounts',
     'pages',
+    'articles',
 ]
 
 MIDDLEWARE = [
@@ -105,9 +108,11 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-
-
-
+STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = [
+    BASE_DIR / 'staticfiles'
+]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -117,3 +122,18 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_RESTRICT_BY_USER = True
