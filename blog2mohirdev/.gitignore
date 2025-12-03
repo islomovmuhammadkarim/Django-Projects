@@ -1,0 +1,26 @@
+# Python bytecode fayllari
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# IDE fayllari
+.vscode/
+.idea/
+
+# Log fayllari
+*.log
+
+# OS fayllari
+.DS_Store
+Thumbs.db
+
+# Paketlar
+*.egg
+*.egg-info/
+dist/
+build/
