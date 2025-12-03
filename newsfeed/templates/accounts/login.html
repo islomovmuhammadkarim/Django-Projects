@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-card">
+
+        <div class="login-header">
+            <div class="neu-icon">
+                 <div class="icon-inner">
+                    <img src="{% static 'images/user.png' %}" alt="User Icon" class="user-img">
+                </div>
+            </div>
+
+            <h2>Login</h2>
+            <p>Hisobingizga kirish uchun login va parolni kiriting.</p>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="login-form">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+            <div class="login-form">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+    
+            <button type="submit" class="neu-button login-btn">
+                <span class="btn-text">KIRISH</span>
+            </button>
+        </form>
+
+        <div class="reset-link-div">
+            <p><a href="{% url 'password_reset' %}" class="reset-link">Parolni tiklash</a></p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+        Mahalliy
+{% endblock %}
+
+{% block content %}
+{% with all=search_result|length %}
+    {% widthratio all 3 1 as one %}
+    {% with one_int=one|add:0 %}
+    <section id="contentSection">
+        <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+
+            <div class="left_content">
+            <div class="fashion_technology_area">
+                <div class="fashion">
+                <div class="single_post_content">
+                    <ul class="spost_nav">
+                      {# 1-qism #}
+                        {% for news in search_result %}
+                        {% if forloop.counter <= one_int %}
+                        <li>
+                                    <div class="media wow fadeInDown"> <a href="{{news.get_absolute_url}}" class="media-left"> <img alt="" src="{{news.image.url}}"> </a>
+                                    <div class="media-body"> <a href="{{news.get_absolute_url}}" class="catg_title"> {{news.title | truncatewords:5}}</a> </div>
+                                    </div>
+                            </li>
+                        {% endif %}
+                        {% endfor %}    
+                    </ul>
+                </div>
+                </div>
+                <div class="technology">
+                <div class="single_post_content">
+                    <ul class="spost_nav">
+                    {# 2-qism #}
+                    {% for news in  search_result %}
+                       {% if forloop.counter > one_int and forloop.counter < one_int|add:one_int %}
+                        <li>
+                            <div class="media wow fadeInDown"> <a href="{{news.get_absolute_url}}" class="media-left"> <img alt="" src="{{news.image.url}}"> </a>
+                            <div class="media-body"> <a href="{{news.get_absolute_url}}" class="catg_title"> {{news.title | truncatewords:5}}</a> </div>
+                            </div>
+                        </li>
+                        {% endif %}
+                    {%endfor%}
+                    </ul>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <aside class="right_content">
+            <div class="single_sidebar">
+                <ul class="spost_nav">
+                    {# 3-qism #}
+                     {% for news in search_result %}
+                        {% if forloop.counter > one_int|add:one_int %}
+                            <li>
+                                <div class="media wow fadeInDown"> <a href="{{news.get_absolute_url}}" class="media-left"> <img alt="" src="{{news.image.url}}"> </a>
+                                <div class="media-body"> <a href="{{news.get_absolute_url}}" class="catg_title"> {{news.title | truncatewords:5}}</a> </div>
+                                </div>
+                            </li>                            
+                        {% endif %}
+                    {%endfor%}
+                </ul>
+            </div>
+            </aside>
+        </div>
+        </div>
+    </section>
+    {% endwith %}    
+{% endwith %}
+{% endblock %}

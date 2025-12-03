@@ -1,0 +1,193 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+    padding: 20px;
+    background-color: #f4f6f8;
+    font-family: "Oswald", "Varela", "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+.login-card {
+    background-color: white;
+    padding: 50px; 
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    max-width: 450px;
+    width: 100%;
+}   
+.login-form {
+    margin-bottom: 20px;
+}
+.login-form label{
+    display: block;
+    margin-bottom: 5px;
+}
+.login-form input{
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px solid #ce39cc;
+    width: 100%;
+}
+
+.icon-inner .user-img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+}
+
+
+.neu-button.login-btn{
+    width: 70%;
+    background: #ce39cc;
+    border: none;
+    border-radius: 15px;
+    padding: 18px 32px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.neu-button.login-btn:hover{
+    transform: translateY(-2px);
+    box-shadow:
+        12px 12px 30px #bec3cf,
+        -12px -12px 30px #ffffff;
+}
+
+.reset-link{
+    font-size: 14px;
+}
+
+
+
+
+
+/* CHIQISH BUTTON */
+.navbar-logout-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: #f4f6f8;
+    padding: 14px;
+
+    font-family: "Oswald", "Varela", "Open Sans", sans-serif;
+    font-weight: 400;  
+    font-size: 14px;   
+    text-transform: uppercase; 
+}
+
+.navbar-logout-btn:hover {
+    background-color: #ce39cc;
+}
+
+
+
+/* RESET PASSWORD */
+.reset-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+    padding: 20px;
+    background-color: #f4f6f8;
+    font-family: "Oswald", "Varela", "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+.reset-card {
+    background-color: white;
+    padding: 50px; 
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    max-width: 450px;
+    width: 100%;
+}  
+.reset-card p {
+    font-size: 14px;
+} 
+
+.reset-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.icon-inner .email-img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+}
+
+.reset-form {
+    margin-bottom: 30px;
+}
+.reset-form label{
+    display: block;
+    margin-bottom: 5px;
+}
+.reset-form input{
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ce39cc;
+    width: 100%;
+}
+
+
+.neu-button.reset-btn{
+    width: 70%;
+    background: #ce39cc;
+    border: none;
+    border-radius: 15px;
+    padding: 18px 32px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.neu-button.reset-btn:hover{
+    transform: translateY(-2px);
+    box-shadow:
+        12px 12px 30px #bec3cf,
+        -12px -12px 30px #ffffff;
+}
+
+
+
+.reset-link-div{
+    margin-top: 20px;
+    color: #ce39cc;
+}
+
+
+/* RESET DONE qismi */
+.reset-done h1{
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ce39cc;
+}
+.reset-done p{
+    text-align: center;
+    font-size: 14px;
+}
+
+.errors{
+    color: red;
+}

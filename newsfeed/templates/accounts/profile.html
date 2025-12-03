@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="profile-container">
+
+    <div class="profile-card">
+        <div class="profile-content">
+            <!-- Avatar chap tomonda -->
+            <div class="avatar-wrapper">
+                {% if profile_obj.avatar %}
+                    <img src="{{ profile_obj.avatar.url }}" class="avatar">
+                {% else %}
+                    <img src="{% static 'img/default-avatar.png' %}" class="avatar">
+                {% endif %}
+                {% if user_obj == request.user %}
+                        <div class="edit-btn">
+                            <a href="{% url 'edit_user' %}">Tahrirlash</a>
+                        </div>
+                {% endif %}
+            </div>
+
+            <!-- Ma’lumotlar o‘ng tomonda -->
+            <div class="profile-info">
+                <h1>{{ user_obj.first_name }} {{ user_obj.last_name }}</h1>
+                <p><strong>Email:</strong> {{ user_obj.email }}</p>
+                <p><strong>Bio:</strong>{{ profile_obj.bio | safe }}</p>
+                <p><strong>Manzil:</strong> {{ profile_obj.location }}</p>
+                <p><strong>Tug'ilgan sana:</strong> {{ profile_obj.birth_date }}</p>
+                
+                <div class="share-link">
+                    <button onclick="copyLink()" class="copy-btn">Ulashish</button>
+                </div>  
+            </div> 
+        </div>
+    </div>
+</div>
+
+<script>
+function copyLink() {
+    const link = "{{ profile_url }}"; // view’dan kelgan URL
+    navigator.clipboard.writeText(link)
+        .then(() => { alert("Profil linki nusxalandi: " + link); })
+        .catch(() => { alert("Link nusxalanmadi"); });
+}
+</script>
+
+
+{% endblock %}

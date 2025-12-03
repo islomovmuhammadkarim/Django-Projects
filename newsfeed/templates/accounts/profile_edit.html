@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="profile-container">
+
+    <div class="profile-card">
+        <h2 class="title">Profil ma'lumotlari</h2>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ profile_form.media }} 
+            <!-- Avatar -->
+            <div class="avatar-wrapper">
+                {% if user.profile.avatar %}
+                    <img src="{{ user.profile.avatar.url }}" class="avatar" id="avatarPreview">
+                {% else %}
+                    <img src="{% static 'image/profile.jpg' %}" class="avatar" id="avatarPreview">
+                {% endif %}
+                <label for="avatar-input" class="choose-photo">Choose Photo</label>
+                <input type="file" id="avatar-input" name="avatar" accept="image/*">
+            </div>
+
+            <!-- Form inputlar -->
+            <div class="profile-info">
+                        
+                <input type="text" name="username" value="{{ user.username }}" placeholder="Username" required>
+                <input type="email" name="email" value="{{ user.email }}" placeholder="Email address" required>
+                <input type="text" name="first_name" value="{{ user.first_name }}" placeholder="First name">
+                <input type="text" name="last_name" value="{{ user.last_name }}" placeholder="Last name">
+                {{ profile_form.bio }}   
+                <input type="text" name="location" value="{{ user.profile.location }}" placeholder="Location">
+                <input type="date" name="birth_date" value="{{ user.profile.birth_date|date:'Y-m-d' }}" placeholder="Birth date">
+                
+                <button type="submit" class="save-btn">Saqlash</button>
+            </div>
+        </form>
+    </div>
+
+</div>  
+
+{% endblock %}

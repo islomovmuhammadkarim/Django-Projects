@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-card">
+
+        <div class="login-header">
+            <h1 style="color: #ce39cc;">Ro‘yxatdan o‘tish</h1>
+        </div>        
+         <form method="POST">
+            {% csrf_token %}
+            <div class="login-form">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+            <div class="login-form">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="login-form">
+                <label>First name</label>
+                <input type="text" name="firstname" placeholder="First name" required>
+            </div>
+            <div class="login-form">
+                <label>Last name</label>
+                <input type="text" name="lastname" placeholder="Last name" required>
+            </div>
+            <div class="login-form">
+                <label>Password</label>
+                <input type="password" name="password1" placeholder="Password" required>
+            </div>
+            <div class="login-form">
+                <label>Confirm Password</label>
+                <input type="password" name="password2" placeholder="Confirm Password" required>
+            </div>
+            <div class="errors">
+                {{form.errors}}
+            </div>
+
+            <div class="login-form">
+                <button type="submit" class="neu-button login-btn">
+                    <span class="btn-text">Ro‘yxatdan o‘tish</span>
+                </button>
+            </div>
+        </form>
+
+
+
+        <p>Allaqachon hisobingiz bormi? <a href="{% url 'login' %}">Kirish</a></p>
+    </div>
+</div>
+{% endblock %}

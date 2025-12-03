@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+     <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_page">
+            
+            <h3><span style="color: #d083cf;">{{ object.title }}</span> o‘chirilsinmi?</h3>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger mx-2">O‘chirish</button>
+                <a href="{% url 'news-home' %}" class="btn btn-secondary mx-2">Bekor qilish</a>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <aside class="right_content">
+          <div class="single_sidebar">
+            <h2><span>Popular Post</span></h2>
+            <ul class="spost_nav">
+              {% for popular_news in popular_news %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{{popular_news.get_absolute_url}}" class="media-left"> <img alt="" src="{{popular_news.image.url}}"> </a>
+                  <div class="media-body"> <a href="{{popular_news.get_absolute_url}}" class="catg_title"> {{popular_news.title}}</a> </div>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
+
+
+
+
+
+
+
+
