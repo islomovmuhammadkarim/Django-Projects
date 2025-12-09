@@ -1,0 +1,46 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# Virtual environment
+venv/
+.env/
+.venv/
+
+# Django
+*.log
+*.pot
+*.py[cod]
+# db.sqlite3
+media/
+staticfiles/
+*.sqlite3
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+
+# PyCharm
+.idea/
+
+# Node.js (agar frontend ishlatilsa)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Coverage
+.coverage
+htmlcov/
+.coverage.*
+
+# Migrations (ba'zi loyihalarda saqlanadi, ba'zida ignore qilinadi)
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Django cache
+*.cache

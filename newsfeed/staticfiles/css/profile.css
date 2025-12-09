@@ -1,0 +1,178 @@
+/* Body va umumiy container */
+body {
+    background: #f5f5f8;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+.profile-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    width: 800px;
+    max-width: 90%; /* responsive uchun */
+    box-shadow: 0 7px 25px rgba(0,0,0,0.1);
+}
+
+.title {
+    text-align: center;
+    color: #ce39cc;
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+/* Profile content: avatar + form */
+.profile-content {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* responsive uchun */
+}
+
+/* Avatar qismi */
+.avatar-wrapper {
+    flex: 1;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ce39cc;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ce39cc;
+}
+
+#avatar-input {
+    display: none;
+}
+
+/* “Choose Photo” tugmasi avatar ustida */
+.choose-photo {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(206, 57, 204, 0.8);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.choose-photo:hover {
+    background: rgba(206, 57, 204, 1);
+}
+
+/* Form elementlari */
+.profile-info {
+    flex: 2;
+    min-width: 300px;
+}
+
+.profile-info input,
+.profile-info textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px; /* form elementlar orasidagi bo‘shliq */
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+/* Placeholder bilan kompakt input */
+.profile-info input::placeholder,
+.profile-info textarea::placeholder {
+    color: #888;
+}
+
+.profile-info input:focus,
+.profile-info textarea:focus {
+    outline: none;
+    border-color: #ce39cc;
+    box-shadow: 0 0 5px rgba(206, 57, 204, 0.3);
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Save tugmasi */
+.save-btn {
+    padding: 12px 25px;
+    background: #ce39cc;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    display: block;
+    margin: 20px auto 0; /* markazga tushadi */
+}
+
+.save-btn:hover {
+    background: #a627a7;
+}
+.edit-btn { display: inline-block; padding: 12px 25px; background-color: #ce39cc; color: #fff; text-decoration: none; border-radius: 12px; font-size: 16px; transition: 0.3s; } .edit-btn:hover { background-color: #a627a7; }
+
+/* Share link qismi */
+.share-link {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.share-link input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.copy-btn {
+    padding: 10px 15px;
+    background: #ce39cc;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.copy-btn:hover {
+    background: #a627a7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .avatar {
+        width: 150px;
+        height: 150px;
+    }
+}

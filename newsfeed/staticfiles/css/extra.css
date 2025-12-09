@@ -1,0 +1,134 @@
+body{
+    background-color: #ce39cc;
+}
+
+/* Til tanlash select elementi */
+/* Formni inline qilish, navbar bilan moslash */
+.language-form {
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: middle;
+    margin-top: 10px;
+}
+
+/* Select elementini stil qilish */
+.language-form select {
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none; /* default arrow-ni olib tashlash (faqat zamonaviy brauzerlar) */
+}
+
+/* Hover va fokus holatlari */
+.language-form select:hover,
+.language-form select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+/* Select arrow uchun fallback (faqat Firefox/Chrome) */
+.language-form select::-ms-expand {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+.comments-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.comments-section h3 {
+    color: #ce39cc;
+    margin-bottom: 20px;
+}
+
+.comment {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.comment-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comment-date {
+    font-weight: normal;
+    color: #999;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.comment-body p {
+    margin: 0;
+}
+
+.comment-form {
+    margin-top: 30px;
+}
+
+.comment-form h4 {
+    margin-bottom: 10px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Qidiruv konteyneri */
+.form-control-search {
+
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+/* Inputni bezatish */
+.form-control-search-input {
+    margin-top: 7px;
+    padding: 8px 15px;
+    height: 35px;
+    width: 180px;
+    border-radius: 20px;
+    border: 1px solid #ce39cc;
+    outline: none;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+/* Focus effekti */
+.form-control-search-input:focus {
+    width: 230px;
+    border-color: #a627a7;
+    box-shadow: 0 0 8px rgba(206, 57, 204, 0.4);
+}
+
+/* Navbar ichida vertikal o‘rnatish */
+li .form-control-search {
+    display: flex;
+    align-items: center;
+}
+
+

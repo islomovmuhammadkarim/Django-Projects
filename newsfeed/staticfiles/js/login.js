@@ -179,3 +179,12 @@ if (!document.querySelector('#neu-keyframes')) {
 document.addEventListener('DOMContentLoaded', () => {
     new NeumorphismLoginForm();
 });
+
+
+function copyLink() {
+    const copyText = document.getElementById("profileLink");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* mobil uchun */
+    document.execCommand("copy");
+    alert("Profil linki nusxalandi: " + copyText.value);
+}
